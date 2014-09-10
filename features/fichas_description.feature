@@ -8,7 +8,7 @@ Característica: Descripción de fichas de material
 
   Antecedentes:
     Dado tabla de fichas:
-     | Nombre                                         |     Codigo |
+     | nombre                                         |     codigo |
      | Captador solar plano QRD CR10ALDP8 1900x1090mm | 0000000531 |
      | Panel fotovoltaico 24V 240Wp                   | 0000000523 |
      | Tornillo abrazadera M10                        | 0000000350 |

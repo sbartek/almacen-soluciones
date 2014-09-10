@@ -1,0 +1,25 @@
+<%= form_for(@ficha) do |f| %>
+  <% if @ficha.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ficha.errors.count, "error") %> prohibited this ficha from being saved:</h2>
+
+      <ul>
+      <% @ficha.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :codigo %><br>
+    <%= f.text_field :codigo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
