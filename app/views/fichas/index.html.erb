@@ -12,7 +12,7 @@
   <tbody>
     <% @fichas.each do |ficha| %>
       <tr>
-        <td><%= ficha.nombre %></td>
+        <td><%= link_to ficha.nombre, ficha %></td>
         <td><%= ficha.codigo %></td>
         <td><%= link_to 'Show', ficha %></td>
         <td><%= link_to 'Edit', edit_ficha_path(ficha) %></td>
