@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'inicio/index'
+  root 'inicio#index'
+
   resources :fichas
 
   # The priority is based upon order of creation: first created -> highest priority.

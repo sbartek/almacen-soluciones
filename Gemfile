@@ -4,6 +4,11 @@ ruby "2.1.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
+gem 'bootstrap-sass'
+gem 'sprockets'        
+gem 'bootstrap_form'
+gem 'autoprefixer-rails'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -49,3 +54,4 @@ gem "autotest-rails", group: [:development, :test]
 gem 'database_cleaner', github:
     'bmabey/database_cleaner', group: :test
 gem 'factory_girl_rails', group: [:test]
+
