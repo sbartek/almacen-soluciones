@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 Dado(/^tabla de fichas:$/) do |table|
-  Ficha.create!(table.hashes)
+  table.hashes.each do |attributes|
+    FactoryGirl.create(:ficha, attributes)
+  end
 end
 
 Cuando(/^hago click en el enlace "(.*?)" de la pagina inicial$/) do |nombre_enlace|
