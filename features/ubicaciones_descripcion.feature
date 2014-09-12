@@ -13,7 +13,7 @@ Característica: Descripcion de ubicaciones
     Dado tabla de fichas:
      | nombre                  |     codigo |
      | Tornillo abrazadera M10 | 0000000350 |
-    Dado materiales:
+    Dado tabla de materiales:
      | nombre                  | contenedor | cantidad |
      | Tornillo abrazadera M10 |          1 |       25 |
 
