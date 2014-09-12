@@ -13,7 +13,6 @@ Característica: Descripción de fichas de material
      | Panel fotovoltaico 24V 240Wp                   | 0000000523 |
      | Tornillo abrazadera M10                        | 0000000350 |
 
-  @wip 
   Escenario: Mostrar detalles de una ficha
     Cuando hago click en el enlace "Lista de materiales" de la pagina inicial
     Entonces aparece lista de fichas que contiene enlace "Tornillo abrazadera M10"

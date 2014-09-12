@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :materials
+
+  resources :ubicacions
+
   get 'inicio/index'
   root 'inicio#index'
 

@@ -1,0 +1,29 @@
+<%= form_for(@ubicacion) do |f| %>
+  <% if @ubicacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ubicacion.errors.count, "error") %> prohibited this ubicacion from being saved:</h2>
+
+      <ul>
+      <% @ubicacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codigo %><br>
+    <%= f.text_field :codigo %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :ciudad %><br>
+    <%= f.text_field :ciudad %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
