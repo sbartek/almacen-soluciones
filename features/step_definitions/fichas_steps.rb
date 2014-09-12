@@ -17,5 +17,5 @@ Cuando(/^hago click  en "(.*?)"$/) do |nombre_enlace|
 end
 
 Entonces(/^aparece la ficha de material con titulo "(.*?)"$/) do |nombre_titulo|
-  expect(page).to have_title(nombre_titulo)
+  expect(find('h1')).to have_content(nombre_titulo)
 end
