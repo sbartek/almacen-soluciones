@@ -1,4 +1,4 @@
- require 'factory_girl'
+require 'factory_girl'
  
 FactoryGirl.define do
    factory :ficha do
@@ -10,5 +10,11 @@ FactoryGirl.define do
      codigo "0000000000"
      nombre "XXX - 000000 - 0"                     
      ciudad "XXX"
+   end
+
+   factory :material do
+     cantidad 102
+     ubicacion FactoryGirl.create(:ubicacion)
+     ficha FactoryGirl.create(:ficha)
    end
 end

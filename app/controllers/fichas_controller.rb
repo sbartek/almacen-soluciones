@@ -10,6 +10,8 @@ class FichasController < ApplicationController
   # GET /fichas/1
   # GET /fichas/1.json
   def show
+    @ficha = Ficha.find(params[:id])
+    @materials = @ficha.materials
   end
 
   # GET /fichas/new

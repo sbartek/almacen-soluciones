@@ -11,5 +11,16 @@
   <%= @ficha.codigo %>
 </p>
 
+<h3>Stock</h3>
+<p>
+  <strong>Cantidad total:</strong>
+  <%= @ficha.cantidad_total %>
+</p>
+
+
+<%= render 'materials/table' %>
+
+
+
 <%= link_to 'Edit', edit_ficha_path(@ficha) %> |
 <%= link_to 'Back', fichas_path %>
