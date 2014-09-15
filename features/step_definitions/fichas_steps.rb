@@ -10,7 +10,7 @@ Cuando(/^hago click en el enlace "(.*?)" de la pagina inicial$/) do |nombre_enla
   click_link nombre_enlace
 end
 
-Entonces(/^aparece lista de fichas que contiene enlace "(.*?)"$/) do |nombre_enlace|
+Entonces(/^aparece lista de "(.*?)[s]" que contiene enlace "(.*?)"$/) do |model, nombre_enlace|
   expect(page).to have_link nombre_enlace
 end
 

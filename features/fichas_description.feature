@@ -15,7 +15,7 @@ Característica: Descripción de fichas de material
 
   Escenario: Mostrar detalles de una ficha
     Cuando hago click en el enlace "Lista de materiales" de la pagina inicial
-    Entonces aparece lista de fichas que contiene enlace "Tornillo abrazadera M10"
+    Entonces aparece lista de "fichas" que contiene enlace "Tornillo abrazadera M10"
     Cuando hago click  en "Tornillo abrazadera M10"
     Entonces aparece la ficha de material con titulo "Tornillo abrazadera M10" 
 
