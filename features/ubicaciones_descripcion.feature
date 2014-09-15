@@ -15,9 +15,8 @@ Característica: Descripcion de ubicaciones
      | Tornillo abrazadera M10 | 0000000350 |
     Dado tabla de materiales:
      | nombre                  | contenedor | cantidad |
-     | Tornillo abrazadera M10 |          1 |       25 |
+     | Tornillo abrazadera M10 |         18 |       25 |
 
-  @wip
   Escenario: Mostrar lista de materiales dentro de un contenedor
     Cuando hago click en el enlace "Lista de ubicaciones" de la pagina inicial
     Entonces aparece lista de "ubicaciones" que contiene enlace "18"

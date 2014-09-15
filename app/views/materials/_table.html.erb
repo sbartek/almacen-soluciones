@@ -11,7 +11,7 @@
   <tbody>
     <% @materials.each do |material| %>
       <tr>
-        <td><%= material.ficha.nombre %></td>
+        <td><%= link_to material.ficha.nombre, material.ficha %></td>
         <td><%= material.ubicacion.codigo %></td>
         <td><%= material.cantidad %></td>
         <td>

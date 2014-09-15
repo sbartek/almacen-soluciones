@@ -11,6 +11,7 @@ Cuando(/^hago click en el enlace "(.*?)" de la pagina inicial$/) do |nombre_enla
 end
 
 Entonces(/^aparece lista de "(.*?)[s]" que contiene enlace "(.*?)"$/) do |model, nombre_enlace|
+  save_and_open_page
   expect(page).to have_link nombre_enlace
 end
 
