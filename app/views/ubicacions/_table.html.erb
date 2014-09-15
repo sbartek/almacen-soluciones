@@ -1,0 +1,36 @@
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Ciudad</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ubicacions.each do |ubicacion| %>
+      <tr>
+        <td><%= link_to ubicacion.codigo, ubicacion %></td>
+        <td><%= ubicacion.nombre %></td>
+        <td><%= ubicacion.ciudad %></td>
+        <td>
+          <%= link_to ubicacion do %>
+          <i class="fa fa-eye"></i>
+          <% end %>
+        </td>
+
+        <td>
+          <%= link_to edit_ubicacion_path(ubicacion) do %>
+          <i class="fa fa-pencil-square-o"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to ubicacion, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -10,6 +10,8 @@ class UbicacionsController < ApplicationController
   # GET /ubicacions/1
   # GET /ubicacions/1.json
   def show
+    @ubicacion = Ubicacion.find(params[:id])
+    @materials = @ubicacion.materials
   end
 
   # GET /ubicacions/new
