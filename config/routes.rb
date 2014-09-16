@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :subfamilia
+
+  resources :familia
+
+  resources :negocio_unidads
+
   resources :materials
 
   resources :ubicacions

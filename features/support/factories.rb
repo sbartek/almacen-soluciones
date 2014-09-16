@@ -1,10 +1,26 @@
+# -*- coding: utf-8 -*-
 require 'factory_girl'
  
 FactoryGirl.define do
-   factory :ficha do
-     nombre "Tornillo"
-     codigo "9000000001"
-   end
+
+  factory :negocio_unidad do
+    nombre "Energía"
+  end
+
+  factory :familia do
+    nombre "Fontanería"
+    negocio_unidad FactoryGirl.create(:negocio_unidad)
+  end
+
+  factory :subfamila do
+    nombre "Accesorios"
+    subfamila FactoryGirl.create(:familia)
+  end
+
+  factory :ficha do
+    nombre "Tornillo"
+    codigo "9000000001"
+  end
 
    factory :ubicacion do 
      codigo "0000000000"

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-Dado(/^tabla de fichas:$/) do |table|
+Dado(/^tabla de "?fichas"?:$/) do |table|
   table.hashes.each do |attributes|
     FactoryGirl.create(:ficha, attributes)
   end
@@ -41,5 +41,23 @@ Dado(/^material "(.*?)" en contenedor con nombre "(.*?)"$/) do |nombre_ficha, no
 end
 
 Entonces(/^en la lista "Stock" aparezca una entrada cuyo almacen no tiene codigo$/) do 
-  pending # express the regexp above with the code you wish you had
+  expect(page.all('tr')[3].all('td')[2].text).to eq("dupa")
 end
+
+
+Cuando(/^en el campo de búsqueda escribimos "(.*?)"$/) do |arg1|
+  visit '/'
+  fill_in "search_fichas", with: arg1
+  click_button 'Buscar'
+end
+
+Entonces(/^la lista de "(.*?)" no continene enlace "(.*?)"$/) do |model, nombre_enlace|
+  expect(page).to_not have_link nombre_enlace
+end
+
+
+
+Entonces(/^aparece mensaje "(.*?)"$/) do |mensaje|
+  expect(page).to have_content(mensaje)
+end
+

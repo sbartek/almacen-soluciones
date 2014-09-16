@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912115354) do
+ActiveRecord::Schema.define(version: 20140916131121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "familia", force: true do |t|
+    t.string   "nombre"
+    t.integer  "negocio_unidad_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "familia", ["negocio_unidad_id"], name: "index_familia_on_negocio_unidad_id", using: :btree
 
   create_table "fichas", force: true do |t|
     t.string   "nombre"
@@ -33,6 +42,21 @@ ActiveRecord::Schema.define(version: 20140912115354) do
 
   add_index "materials", ["ficha_id"], name: "index_materials_on_ficha_id", using: :btree
   add_index "materials", ["ubicacion_id"], name: "index_materials_on_ubicacion_id", using: :btree
+
+  create_table "negocio_unidads", force: true do |t|
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subfamilia", force: true do |t|
+    t.string   "nombre"
+    t.integer  "famila_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subfamilia", ["famila_id"], name: "index_subfamilia_on_famila_id", using: :btree
 
   create_table "ubicacions", force: true do |t|
     t.string   "codigo"

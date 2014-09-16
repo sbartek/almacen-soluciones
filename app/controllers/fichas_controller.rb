@@ -1,10 +1,20 @@
+# -*- coding: utf-8 -*-
+
 class FichasController < ApplicationController
   before_action :set_ficha, only: [:show, :edit, :update, :destroy]
 
   # GET /fichas
   # GET /fichas.json
   def index
-    @fichas = Ficha.all
+    search_fichas = params[:search_fichas]
+    if search_fichas
+      @fichas = Ficha.where('lower(nombre) LIKE ?','%'+ (search_fichas.downcase) +'%' )
+      if @fichas.length == 0
+        flash[:notice] = 'No se encontró ningún resultado.'
+      end
+    else
+      @fichas = Ficha.all
+    end
   end
 
   # GET /fichas/1

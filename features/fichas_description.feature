@@ -33,7 +33,7 @@ Característica: Descripción de fichas de material
     Entonces aparece lista "Stock" de "materiales" que contiene enlace "Tornillo abrazadera M10"
     Y la cantidad total de "40"
 
-@wip
+  @dudosa
   Escenario: Material en contenedor que no tiene numero
     Dado tabla de ubicaciones:
      | codigo | nombre        | ciudad |
@@ -43,5 +43,11 @@ Característica: Descripción de fichas de material
     Entonces en la lista "Stock" aparezca una entrada cuyo almacen no tiene codigo
 
   Escenario: Búsqueda por nombre
-    Cuando en el campo de búsqueda escribimos "tor" en la pagina principal
-    Entonces en la lista de resultados aparecerá "Tornillo abrazadera M10"  
+    Cuando en el campo de búsqueda escribimos "tor" 
+    Entonces aparece lista de "fichas" que contiene enlace "Tornillo abrazadera M10"
+    Y la lista de "fichas" no continene enlace "Panel fotovoltaico 24V 240Wp"
+
+  Escenario: No se encontró ningún resultado
+    Cuando en el campo de búsqueda escribimos "tornilo" 
+    Entonces aparece mensaje "No se encontró ningún resultado"
+    

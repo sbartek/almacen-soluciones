@@ -1,0 +1,21 @@
+<%= form_for(@negocio_unidad) do |f| %>
+  <% if @negocio_unidad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@negocio_unidad.errors.count, "error") %> prohibited this negocio_unidad from being saved:</h2>
+
+      <ul>
+      <% @negocio_unidad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
