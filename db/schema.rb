@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916141921) do
+ActiveRecord::Schema.define(version: 20140916144931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "Fichas_Subfamilias", id: false, force: true do |t|
+    t.integer "ficha_id",      null: false
+    t.integer "subfamilia_id", null: false
+  end
 
   create_table "familia", force: true do |t|
     t.string   "nombre"
