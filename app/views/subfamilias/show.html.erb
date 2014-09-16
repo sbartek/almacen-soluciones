@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @subfamilia.nombre %>
+</p>
+
+<p>
+  <strong>Familia:</strong>
+  <%= @subfamilia.familia %>
+</p>
+
+<%= link_to 'Edit', edit_subfamilia_path(@subfamilia) %> |
+<%= link_to 'Back', subfamilias_path %>

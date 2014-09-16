@@ -12,9 +12,9 @@ FactoryGirl.define do
     negocio_unidad FactoryGirl.create(:negocio_unidad)
   end
 
-  factory :subfamila do
+  factory :subfamilia do
     nombre "Accesorios"
-    subfamila FactoryGirl.create(:familia)
+    familia FactoryGirl.create(:familia)
   end
 
   factory :ficha do

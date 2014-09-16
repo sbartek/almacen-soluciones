@@ -14,11 +14,16 @@ Dado(/^tabla de "?familias"?:$/) do |table|
   end
 end
 
-Dado(/^tabla de "?fubfamilas"?:$/) do |table|
+Dado(/^tabla de "?subfamilias"?:$/) do |table|
   table.hashes.each do |attributes|
-    FactoryGirl.create(:subfamila, {
-                         nombre: attributes[:nombre],
-                         subfamilia: FactoryGirl.create(:familia, {nombre: attributes[:familia]})
-                       })
+    familia_nombre = attributes[:familia]
+    familia = Familia.find_by(nombre: familia_nombre)
+    if not familia
+      familia =  FactoryGirl.create(:familia, {nombre: familia_nombre})
+    end
+    FactoryGirl.create(:subfamilia, {
+                        nombre: attributes[:nombre],
+                        familia: familia
+                      })
   end
 end

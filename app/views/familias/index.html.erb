@@ -1,0 +1,27 @@
+<h1>Listing familias</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Negocio unidad</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @familias.each do |familia| %>
+      <tr>
+        <td><%= familia.nombre %></td>
+        <td><%= familia.negocio_unidad %></td>
+        <td><%= link_to 'Show', familia %></td>
+        <td><%= link_to 'Edit', edit_familia_path(familia) %></td>
+        <td><%= link_to 'Destroy', familia, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Familia', new_familia_path %>

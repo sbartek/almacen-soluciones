@@ -1,0 +1,25 @@
+<%= form_for(@familia) do |f| %>
+  <% if @familia.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@familia.errors.count, "error") %> prohibited this familia from being saved:</h2>
+
+      <ul>
+      <% @familia.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :negocio_unidad_id %><br>
+    <%= f.text_field :negocio_unidad_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
