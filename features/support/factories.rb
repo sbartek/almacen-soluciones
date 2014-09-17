@@ -20,6 +20,7 @@ FactoryGirl.define do
   factory :ficha do
     nombre "Tornillo"
     codigo "9000000001"
+    subfamilias [FactoryGirl.create(:subfamilia)]
   end
 
    factory :ubicacion do 

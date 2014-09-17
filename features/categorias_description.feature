@@ -24,6 +24,7 @@ Característica: Descripción de unidades de negocio, familias y subfamilias
     Dado tabla de "fichas":
      | nombre                                         |     codigo | subfamilia |
      | Captador solar plano QRD CR10ALDP8 1900x1090mm | 0000000531 | Captadores |
+     | Captador de estrellas                          | 0000666666 | Captadores |
      | Panel fotovoltaico 24V 240Wp                   | 0000000523 | Paneles    |
      | Tornillo abrazadera M10                        | 0000000350 | Accesorios |
     

@@ -1,7 +1,21 @@
 # -*- coding: utf-8 -*-
 Dado(/^tabla de "?fichas"?:$/) do |table|
   table.hashes.each do |attributes|
-    FactoryGirl.create(:ficha, attributes)
+    subfamilia_nombre = attributes[:subfamilia]
+    if subfamilia_nombre
+      subfamilia = Subfamilia.find_by(nombre: subfamilia_nombre)
+      if not subfamilia
+        subfamilia = FactoryGirl.create(:subfamilia, nombre: subfamilia_nombre)
+      end
+    else
+      subfamilia = FactoryGirl.create(:subfamilia)
+    end
+    ficha_attr = {
+      nombre: attributes[:nombre],
+      codigo: attributes[:codigo],
+      subfamilias: [subfamilia]
+    }
+    FactoryGirl.create(:ficha, ficha_attr)
   end
 end
 
