@@ -7,9 +7,14 @@ end
 
 Dado(/^tabla de "?familias"?:$/) do |table|
   table.hashes.each do |attributes|
+    negocio_unidad_nombre = attributes[:negocio_unidad]
+    negocio_unidad = NegocioUnidad.find_by(nombre: negocio_unidad_nombre)
+    if not negocio_unidad
+      negocio_unidad = FactoryGirl.create(:negocio_unidad, {nombre: attributes[:negocio_unidad]})
+    end
     FactoryGirl.create(:familia, {
                          nombre: attributes[:nombre],
-                         negocio_unidad: FactoryGirl.create(:negocio_unidad, {nombre: attributes[:negocio_unidad]})
+                         negocio_unidad: negocio_unidad
                        })
   end
 end
