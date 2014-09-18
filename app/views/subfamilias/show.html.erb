@@ -15,6 +15,10 @@
   <%= @subfamilia.familia.negocio_unidad.nombre %>
 </p>
 
+<h3>
+  Fichas de
+  <%= @subfamilia.nombre %>
+</h3>
 <%= render 'fichas/table' %>
 
 <%= link_to 'Editar', edit_subfamilia_path(@subfamilia) %> |

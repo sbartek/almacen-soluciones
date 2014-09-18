@@ -5,5 +5,11 @@
   <%= @negocio_unidad.nombre %>
 </p>
 
-<%= link_to 'Edit', edit_negocio_unidad_path(@negocio_unidad) %> |
-<%= link_to 'Back', negocio_unidads_path %>
+<h3>
+  Familias de 
+  <%= @negocio_unidad.nombre %>
+</h3>
+<%= render 'familias/table' %>
+
+<%= link_to 'Editar', edit_negocio_unidad_path(@negocio_unidad) %> |
+<%= link_to 'Volver', negocio_unidads_path %>

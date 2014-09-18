@@ -10,6 +10,8 @@ class NegocioUnidadsController < ApplicationController
   # GET /negocio_unidads/1
   # GET /negocio_unidads/1.json
   def show
+    @negocio_unidad = NegocioUnidad.find(params[:id])
+    @familias = @negocio_unidad.familias
   end
 
   # GET /negocio_unidads/new

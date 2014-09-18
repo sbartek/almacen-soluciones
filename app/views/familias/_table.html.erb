@@ -1,0 +1,32 @@
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Negocio unidad</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @familias.each do |familia| %>
+      <tr>
+        <td><%= link_to familia.nombre, familia %></td>
+	<td><%= link_to familia.negocio_unidad.nombre, familia.negocio_unidad %></td>
+	<td>
+          <%= link_to familia do %>
+          <i class="fa fa-eye"></i>
+          <% end %>
+        </td>
+	<td>
+          <%= link_to edit_familia_path(familia) do %>
+          <i class="fa fa-pencil-square-o"></i>
+          <% end %>
+        </td>
+        <td><%= link_to familia, method: :delete, data: { confirm: '¿Seguro?' } do %>
+          <i class="fa fa-trash"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

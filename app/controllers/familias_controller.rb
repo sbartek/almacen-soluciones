@@ -10,6 +10,8 @@ class FamiliasController < ApplicationController
   # GET /familias/1
   # GET /familias/1.json
   def show
+    @familia = Familia.find(params[:id])
+    @subfamilias = @familia.subfamilias
   end
 
   # GET /familias/new

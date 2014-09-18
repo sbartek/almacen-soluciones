@@ -7,8 +7,14 @@
 
 <p>
   <strong>Negocio unidad:</strong>
-  <%= @familia.negocio_unidad %>
+  <%= link_to @familia.negocio_unidad.nombre, @familia.negocio_unidad %>
 </p>
+
+<h3>
+  Subfamilias de
+  <%= @familia.nombre %>
+</h3>
+<%= render 'subfamilias/table' %>
 
 <%= link_to 'Edit', edit_familia_path(@familia) %> |
 <%= link_to 'Back', familias_path %>
