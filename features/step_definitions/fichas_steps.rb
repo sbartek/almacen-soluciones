@@ -62,7 +62,7 @@ end
 Cuando(/^en el campo de búsqueda escribimos "(.*?)"$/) do |arg1|
   visit '/'
   fill_in "search_fichas", with: arg1
-  click_button 'Buscar'
+  click_button 'buscar'
 end
 
 Entonces(/^la lista de "(.*?)" no continene enlace "(.*?)"$/) do |model, nombre_enlace|

@@ -3,10 +3,13 @@
     <%= @ficha.nombre %>
   </h1>
 </p>
-
 <p>
   <strong>Codigo:</strong>
   <%= @ficha.codigo %>
+</p>
+<p>
+  <strong>Importancia:</strong>
+  <%= @ficha.importancia %>
 </p>
 
 <h3>Stock</h3>
@@ -15,7 +18,8 @@
   <%= @ficha.cantidad_total %>
 </p>
 
+
 <%= render 'materials/table' %>
 
-<%= link_to 'Edit', edit_ficha_path(@ficha) %> |
-<%= link_to 'Back', fichas_path %>
+<%= link_to 'Editar', edit_ficha_path(@ficha) %> |
+<%= link_to 'Volver', fichas_path %>

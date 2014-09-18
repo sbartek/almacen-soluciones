@@ -1,5 +1,3 @@
-$body-bg: #aaa;
-
 @import "bootstrap";
 
 /*body */
@@ -16,6 +14,11 @@ body {
   filter: none;
 }
 
+a:hover {
+    color: #bbb;
+    background-color: #fff;
+}
+
 .button {
   text-align: center;
   background-color: #e30613;
@@ -27,6 +30,6 @@ body {
 }
 
 .spacefooter {
-  height: 2cm;
+  height: 1.5cm;
 }
 /* footer */

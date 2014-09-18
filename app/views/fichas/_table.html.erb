@@ -3,6 +3,7 @@
     <tr>
       <th>Nombre</th>
       <th>Codigo</th>
+      <th>Importancia</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
       <tr>
         <td><%= link_to ficha.nombre, ficha %></td>
         <td><%= ficha.codigo %></td>
+	<td><%= ficha.importancia %></td>
         <td>
           <%= link_to ficha do %>
           <i class="fa fa-eye"></i>

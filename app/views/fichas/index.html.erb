@@ -1,9 +1,17 @@
-<h1>Fichas</h1>
+<div class="row">
+  <div class="col-sm-10">
+    <h1>Fichas</h1>
+  </div>
+  <div class="col-sm-2 col-xs-4">
+    <%= link_to new_ficha_path do %>
+    <div class="button">
+      <i class="fa fa-file-text-o"></i><br>
+      Nueva Ficha
+    </div>
+    <% end %>
+  </div>
+</div>
 
-<%= render 'fichas/table' %>
-
-<br>
-
-<%= link_to new_ficha_path do %>
-<i class="fa fa-file-text-o"></i> Nueva Ficha
-<% end %>
+<div class="row">
+  <%= render 'fichas/table' %>
+</div>
