@@ -21,26 +21,16 @@ Característica: Descripción de fichas de material
      | Tornillo abrazadera M10 |          1 |       25 |
      | Tornillo abrazadera M10 |         18 |       15 |
 
-
   Escenario: Mostrar detalles de una ficha
     Cuando hago click en el enlace "Lista de materiales" de la pagina inicial
     Entonces aparece lista de "fichas" que contiene enlace "Tornillo abrazadera M10"
-    Cuando hago click  en "Tornillo abrazadera M10"
+    Cuando hago click en "Tornillo abrazadera M10"
     Entonces aparece la ficha de material con titulo "Tornillo abrazadera M10" 
 
   Escenario: Mostrar lista de materiales en distintas ubicaciones
     Cuando entro la pagina de la ficha "Tornillo abrazadera M10"
     Entonces aparece lista "Stock" de "materiales" que contiene enlace "Tornillo abrazadera M10"
     Y la cantidad total de "40"
-
-  @dudosa
-  Escenario: Material en contenedor que no tiene numero
-    Dado tabla de ubicaciones:
-     | codigo | nombre        | ciudad |
-     |        | NERE-123456-1 |        |
-    Dado material "Tornillo abrazadera M10" en contenedor con nombre "NERE-123456-1"
-    Cuando entro la pagina de la ficha "Tornillo abrazadera M10"
-    Entonces en la lista "Stock" aparezca una entrada cuyo almacen no tiene codigo
 
   Escenario: Búsqueda por nombre
     Cuando en el campo de búsqueda escribimos "tor" 

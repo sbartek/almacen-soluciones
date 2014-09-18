@@ -10,6 +10,8 @@ class SubfamiliasController < ApplicationController
   # GET /subfamilias/1
   # GET /subfamilias/1.json
   def show
+    @subfamilia = Subfamilia.find(params[:id])
+    @fichas = @subfamilia.fichas
   end
 
   # GET /subfamilias/new

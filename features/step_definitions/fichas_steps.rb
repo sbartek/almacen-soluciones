@@ -29,7 +29,7 @@ Entonces(/^aparece lista ?"?(.*?)"? de "(.*?)[s]" que contiene enlace "(.*?)"$/)
   expect(page).to have_link nombre_enlace
 end
 
-Cuando(/^hago click  en "(.*?)"$/) do |nombre_enlace|
+Cuando(/^hago click en "(.*?)"$/) do |nombre_enlace|
   click_link nombre_enlace
 end
 

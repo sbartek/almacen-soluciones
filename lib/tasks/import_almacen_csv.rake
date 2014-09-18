@@ -20,17 +20,14 @@ task :import_almacen_csv, [:filename] => :environment do
       Subfamilia.create!(subfamilia_hash)
     end
 
-
     ubi_hash = ubicacion_from_csv(row)
     ubi = Ubicacion.find_by codigo: ubi_hash[:codigo]
     if not ubi
       Ubicacion.create!(ubi_hash)
     end
-    ficha_hash = ficha_from_cvs(row)
-    ficha = Ficha.find_by codigo: ficha_hash[:codigo]
-    if not ficha
-      Ficha.create!(ficha_hash)
-    end
+
+    create_ficha_from_csv(row)
+
     mat_hash = material_from_cvs(row)
     mat = find_material_in_db(mat_hash)
     if not mat
@@ -62,7 +59,17 @@ def ubicacion_from_csv(row)
 end
 
 def ficha_from_cvs(row)
-  {nombre: row[9], codigo: row[8]}
+  {nombre: row[9], codigo: row[8], importancia: row[7]}
+end
+
+def create_ficha_from_csv(row)
+  ficha_hash = ficha_from_cvs(row)
+  ficha = Ficha.find_by codigo: ficha_hash[:codigo]
+  if not ficha
+    ficha = Ficha.create!(ficha_hash)
+    subfamilia = Subfamilia.find_by(nombre: row[6])
+    ficha.subfamilias << subfamilia
+  end
 end
 
 def material_from_cvs(row)

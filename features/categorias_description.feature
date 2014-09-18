@@ -14,11 +14,11 @@ Característica: Descripción de unidades de negocio, familias y subfamilias
     Dado tabla de "familias":
      | nombre        | negocio_unidad |
      | Solar termica | Agua           |
-     | FV            | Energia        |
-     | Fontaneria    | Agua           |
+     | FV            | Energía        |
+     | Fontanería    | Agua           |
     Dado tabla de "subfamilias":
-     | nombre     | famila        |
-     | Accesorios | Fontaneria    |
+     | nombre     | familia       |
+     | Accesorios | Fontanería    |
      | Paneles    | FV            |
      | Captadores | Solar termica |
     Dado tabla de "fichas":
@@ -28,10 +28,9 @@ Característica: Descripción de unidades de negocio, familias y subfamilias
      | Panel fotovoltaico 24V 240Wp                   | 0000000523 | Paneles    |
      | Tornillo abrazadera M10                        | 0000000350 | Accesorios |
     
-  @wip
   Escenario: Mostrar lista de todas las fichas de los materiales en una subfamilia 
-    Cuando en la pagina inicial hago click en el enlace "Lista de subfamilas"
-    Entonces aparezca una lista de enlaces de subfamilias que contiene una fila que contine "Accesorios", "Fontaneria", "Agua"
-    Y cuando hago click en "Accesorios"
-    Entonces aparezca un lista que contiene enlace a "Tornillo abrazadera M10"
+    Cuando hago click en el enlace "Lista de subfamilias" de la pagina inicial
+    Entonces aparezca una lista de enlaces de subfamilias que contiene una fila que contine "Accesorios", "Fontanería", "Agua"
+    Cuando hago click en "Accesorios"
+    Entonces aparece lista de "fichas" que contiene enlace "Tornillo abrazadera M10"
 

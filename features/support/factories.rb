@@ -4,16 +4,16 @@ require 'factory_girl'
 FactoryGirl.define do
 
   factory :negocio_unidad do
-    nombre "Energía"
+    nombre "Energía Nuclear"
   end
 
   factory :familia do
-    nombre "Fontanería"
+    nombre "Fontanería Espacial"
     negocio_unidad FactoryGirl.create(:negocio_unidad)
   end
 
   factory :subfamilia do
-    nombre "Accesorios"
+    nombre "Metaaccesorios"
     familia FactoryGirl.create(:familia)
   end
 

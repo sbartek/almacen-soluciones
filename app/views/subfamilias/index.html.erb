@@ -1,26 +1,7 @@
-<h1>Listing subfamilias</h1>
+<h1>Subfamilias</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Familia</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render 'subfamilias/table' %>
 
-  <tbody>
-    <% @subfamilias.each do |subfamilia| %>
-      <tr>
-        <td><%= subfamilia.nombre %></td>
-        <td><%= subfamilia.familia %></td>
-        <td><%= link_to 'Show', subfamilia %></td>
-        <td><%= link_to 'Edit', edit_subfamilia_path(subfamilia) %></td>
-        <td><%= link_to 'Destroy', subfamilia, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 

@@ -20,9 +20,6 @@ Característica: Descripcion de ubicaciones
   Escenario: Mostrar lista de materiales dentro de un contenedor
     Cuando hago click en el enlace "Lista de ubicaciones" de la pagina inicial
     Entonces aparece lista de "ubicaciones" que contiene enlace "18"
-    Cuando hago click  en "18"
+    Cuando hago click en "18"
     Entonces aparece lista de "fichas" que contiene enlace "Tornillo abrazadera M10"
-
-
-
   
