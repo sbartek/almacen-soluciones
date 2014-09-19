@@ -1,25 +1,65 @@
-<p>
-  <h1>
-    <%= @ficha.nombre %>
-  </h1>
-</p>
-<p>
-  <strong>Codigo:</strong>
-  <%= @ficha.codigo %>
-</p>
-<p>
-  <strong>Importancia:</strong>
-  <%= @ficha.importancia %>
-</p>
+<div class="row">
+  <div class="col-md-3 col-xs-4">
+    <%= link_to edit_ficha_path(@ficha) do %>
+    <div class="button">
+      <i class="fa fa-file-text-o"></i><br>
+      Editar
+        </div>
+    <% end %>
+  </div>
+</div>
 
-<h3>Stock</h3>
-<p>
-  <strong>Cantidad total:</strong>
-  <%= @ficha.cantidad_total %>
-</p>
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Ficha de material 
+        <h4> <%= @ficha.nombre %> </h4>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Codigo:</strong>
+          <%= @ficha.codigo %>
+        </p>
+        <p>
+          <strong>Importancia:</strong>
+          <%= @ficha.importancia %>
+        </p>
+        <p>
+          <strong>Unidad:</strong>
+          <%= @ficha.unidad %>
+        </p>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Stock
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Cantidad total en Stock:</strong>
+          <%= @ficha.cantidad_total %>
+        </p>
+        <%= render 'materials/table' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Costes
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Precio compra Soluciones:</strong>
+          <%= @ficha.pc_soluciones %> €
+        </p>
+        <p>
+          <strong>Costes DDP Saema:</strong>
+          <%= @ficha.ddp_saema %> $
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<%= render 'materials/table' %>
-
-<%= link_to 'Editar', edit_ficha_path(@ficha) %> |
-<%= link_to 'Volver', fichas_path %>

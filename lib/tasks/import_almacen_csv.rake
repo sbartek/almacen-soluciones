@@ -26,6 +26,8 @@ task :import_almacen_csv, [:filename] => :environment do
 
     create_ficha_from_csv(row)
 
+    create_ficha_proveedor_from_csv(row)
+
     ubi_hash = ubicacion_from_csv(row)
     ubi = Ubicacion.find_by codigo: ubi_hash[:codigo]
     if not ubi
@@ -44,6 +46,14 @@ task :import_almacen_csv, [:filename] => :environment do
   end
 end
 
+def precio_reader(precio)
+  num = /(?:\d+.)?\d*(?:,\d\d?)?/.match(precio)
+  num_s = num.to_s
+  num_s.gsub!(/\./,'')
+  num_s.gsub!(/,/,'.')
+  return num_s
+end
+
 def proyecto_from_csv(row)
   {nombre: row[3]}
 end
@@ -59,8 +69,7 @@ end
 def proveedor_from_csv(row)
   if (row[11] =~ /\S/)
     {nombre: row[11]}
-  end
-  
+  end  
 end
 
 def create_proveedor_from_csv(row)
@@ -68,9 +77,11 @@ def create_proveedor_from_csv(row)
   if proveedor_hash
     proveedor = Proveedor.find_by(proveedor_hash)
     if not proveedor
-      Proveedor.create!(proveedor_hash)
+      proveedor = Proveedor.create!(proveedor_hash)
     end
+    return proveedor
   end
+  return nil
 end
 
 def negocio_unidad_from_csv(row)
@@ -88,7 +99,22 @@ def subfamilia_from_csv(row)
 end
 
 def ficha_from_cvs(row)
-  {nombre: row[9], codigo: row[8], importancia: row[7]}
+  pc_soluciones = precio_reader(row[14])
+  if not /\S+/.match(pc_soluciones)
+    pc_soluciones = (precio_reader(row[15]).to_d/1.25).to_s
+  end
+  unidad = row[23]
+  if not /\S+/.match(unidad)
+    unidad="UNIDAD"
+  end
+  {
+    nombre: row[9], 
+    codigo: row[8], 
+    importancia: row[7], 
+    pc_soluciones: pc_soluciones, 
+    ddp_saema: precio_reader(row[21]),
+    unidad: unidad
+  }
 end
 
 def create_ficha_from_csv(row)
@@ -99,16 +125,40 @@ def create_ficha_from_csv(row)
     subfamilia = Subfamilia.find_by(nombre: row[6])
     ficha.subfamilias << subfamilia
   end
+  return ficha
 end
 
 def ficha_proveedor_from_csv(row)
-  {nombre: row}
+  precio = precio_reader(row[13])
+  hash =  {nombre: row[10], codigo: row[12], precio: precio}
+  if (hash[:nombre] =~ /\S+/) 
+    hash
+  elsif (hash[:codigo] =~ /\S+/) or (hash[:precio] =~ /\S+/)
+    hash[:nombre] = row[9]    
+    hash
+  end
 end
 
 def create_ficha_proveedor_from_csv(row)
-  ficha_proveedor_hash = ficha_proveedor_from_csv(row)
+  hash = ficha_proveedor_from_csv(row)
+  if hash
+    proveedor = create_proveedor_from_csv(row)
+    find_by = {nombre: hash[:nombre]}
+    if proveedor
+      find_by[:proveedor] = proveedor
+    end
+    ficha_proveedor = FichaProveedor.find_by(find_by)
+    if not ficha_proveedor
+      ficha_proveedor = FichaProveedor.new(hash)
+      ficha_proveedor.proveedor = proveedor
+      ficha = create_ficha_from_csv(row)
+      ficha_proveedor.ficha = ficha
+      ficha_proveedor.save
+      puts ficha_proveedor
+    end
+    return ficha_proveedor
+  end
 end
-
 
 def ubicacion_from_csv(row)
   {codigo: row[0], nombre: row[1], ciudad: row[2]}

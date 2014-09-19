@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919095826) do
+ActiveRecord::Schema.define(version: 20140919125726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(version: 20140919095826) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "importancia"
+    t.decimal  "pc_soluciones", precision: 9, scale: 2
+    t.decimal  "ddp_saema",     precision: 9, scale: 2
+    t.string   "unidad"
   end
 
   create_table "fichas_subfamilias", id: false, force: true do |t|
