@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918093416) do
+ActiveRecord::Schema.define(version: 20140919095826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 20140918093416) do
   end
 
   add_index "familias", ["negocio_unidad_id"], name: "index_familias_on_negocio_unidad_id", using: :btree
+
+  create_table "ficha_proveedors", force: true do |t|
+    t.string   "nombre"
+    t.string   "codigo"
+    t.decimal  "precio",       precision: 9, scale: 2
+    t.integer  "ficha_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "proveedor_id"
+  end
+
+  add_index "ficha_proveedors", ["ficha_id"], name: "index_ficha_proveedors_on_ficha_id", using: :btree
+  add_index "ficha_proveedors", ["proveedor_id"], name: "index_ficha_proveedors_on_proveedor_id", using: :btree
 
   create_table "fichas", force: true do |t|
     t.string   "nombre"
@@ -44,12 +57,25 @@ ActiveRecord::Schema.define(version: 20140918093416) do
     t.integer  "ubicacion_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "proyecto_id"
   end
 
   add_index "materials", ["ficha_id"], name: "index_materials_on_ficha_id", using: :btree
   add_index "materials", ["ubicacion_id"], name: "index_materials_on_ubicacion_id", using: :btree
 
   create_table "negocio_unidads", force: true do |t|
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "proveedors", force: true do |t|
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "proyectos", force: true do |t|
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"

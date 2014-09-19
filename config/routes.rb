@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :ficha_proveedors
+
+  resources :proveedors
+
+  resources :proyectos
+
   resources :subfamilias
 
   resources :familias

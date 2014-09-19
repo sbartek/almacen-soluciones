@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @ficha_proveedor.nombre %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @ficha_proveedor.codigo %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @ficha_proveedor.precio %>
+</p>
+
+<p>
+  <strong>Ficha:</strong>
+  <%= @ficha_proveedor.ficha %>
+</p>
+
+<%= link_to 'Edit', edit_ficha_proveedor_path(@ficha_proveedor) %> |
+<%= link_to 'Back', ficha_proveedors_path %>
