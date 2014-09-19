@@ -17,11 +17,11 @@
   <div class="field">
     <%= f.text_field :codigo %>
   </div>
-  <div class="field">
-    <%= f.text_field :importancia %>
+  <div class="form-group">
+    <%= f.select :importancia, "<option>A</option><option>B</option><option>C</option><option>D</option>".html_safe %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  %>
   </div>
 <% end %>
