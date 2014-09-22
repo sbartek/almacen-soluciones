@@ -22,6 +22,7 @@ class FichasController < ApplicationController
   def show
     @ficha = Ficha.find(params[:id])
     @materials = @ficha.materials
+    @subfamilias = @ficha.subfamilias
   end
 
   # GET /fichas/new

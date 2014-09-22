@@ -1,34 +1,34 @@
 <table class="table table-condensed">
-  <thead>
+<thead>
     <tr>
-      <th>Nombre</th>
+      <th>Subfamilia</th>
       <th>Familia</th>
       <th>Unidad de negocio</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+</thead>
 
-  <tbody>
-    <% @subfamilias.each do |subfamilia| %>
-      <tr>
-        <td><%= link_to subfamilia.nombre, subfamilia %></td>
-        <td><%= link_to subfamilia.familia.nombre, subfamilia.familia %></td>
-	<td><%= link_to subfamilia.familia.negocio_unidad.nombre, subfamilia.familia.negocio_unidad %></td>
-	<td>
-          <%= link_to subfamilia do %>
-          <i class="fa fa-eye"></i>
+<tbody>
+  <% @subfamilias.each do |subfamilia| %>
+  <tr>
+    <td><%= link_to subfamilia.nombre, subfamilia %></td>
+    <td><%= link_to subfamilia.familia.nombre, subfamilia.familia %></td>
+	  <td><%= link_to subfamilia.familia.negocio_unidad.nombre, subfamilia.familia.negocio_unidad %></td>
+	  <td>
+      <%= link_to subfamilia do %>
+      <i class="fa fa-eye"></i>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to edit_subfamilia_path(subfamilia) do %>
+      <i class="fa fa-pencil-square-o"></i>
+      <% end %>
+    </td>
+    <td><%= link_to subfamilia, method: :delete, data: { confirm: '¿Seguro?' } do %>
+      <i class="fa fa-trash"></i>
           <% end %>
-        </td>
-        <td>
-          <%= link_to edit_subfamilia_path(subfamilia) do %>
-          <i class="fa fa-pencil-square-o"></i>
-          <% end %>
-        </td>
-        <td><%= link_to subfamilia, method: :delete, data: { confirm: '¿Seguro?' } do %>
-          <i class="fa fa-trash"></i>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
 </table>

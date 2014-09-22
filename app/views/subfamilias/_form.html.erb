@@ -1,4 +1,4 @@
-<%= form_for(@subfamilia) do |f| %>
+<%= bootstrap_form_for(@subfamilia) do |f| %>
   <% if @subfamilia.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@subfamilia.errors.count, "error") %> prohibited this subfamilia from being saved:</h2>
@@ -12,12 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nombre %><br>
     <%= f.text_field :nombre %>
   </div>
-  <div class="field">
-    <%= f.label :familia_id %><br>
-    <%= f.text_field :familia_id %>
+  <div class="form-group">
+    <%= f.select :familia_id,  Familia.all.collect {|f| [ f.nombre, f.id ] } %>
   </div>
   <div class="actions">
     <%= f.submit %>
