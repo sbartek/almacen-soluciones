@@ -34,12 +34,12 @@ Cuando(/^hago click en "(.*?)"$/) do |nombre_enlace|
 end
 
 Entonces(/^aparece la ficha de material con titulo "(.*?)"$/) do |nombre_ficha|
-  expect(find('h1')).to have_content(nombre_ficha)
+  expect(find('h4')).to have_content(nombre_ficha)
 end
 
 Cuando(/^entro la pagina de la ficha "(.*?)"$/) do |nombre_ficha|
   visit '/'
-  click_link "Lista de materiales"
+  click_link "Articulos"
   click_link nombre_ficha
 end
 

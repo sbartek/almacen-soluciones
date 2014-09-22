@@ -14,11 +14,11 @@
   <div class="field">
     <%= f.number_field :cantidad %>
   </div>
-  <div class="field">
-    <%= f.text_field :ficha_id %>
+  <div class="form-group">
+    <%= f.select :ficha_id, Ficha.all.collect {|f| [ f.codigo+": "+f.nombre, f.id ] } %>
   </div>
-  <div class="field">
-    <%= f.text_field :ubicacion_id %>
+  <div class="form-group">
+    <%= f.select :ubicacion_id, Ubicacion.all.collect {|u| [ u.codigo+": "+u.nombre, u.id ] } %>
   </div>
   <div class="actions">
     <%= f.submit %>

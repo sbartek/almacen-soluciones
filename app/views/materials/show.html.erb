@@ -7,13 +7,13 @@
 
 <p>
   <strong>Ficha:</strong>
-  <%= @material.ficha %>
+  <%= link_to @material.ficha.nombre, @material.ficha.nombre %>
 </p>
 
 <p>
   <strong>Ubicacion:</strong>
-  <%= @material.ubicacion %>
+  <%= link_to @material.ubicacion.to_s, @material.ubicacion %>
 </p>
 
-<%= link_to 'Edit', edit_material_path(@material) %> |
-<%= link_to 'Back', materials_path %>
+<%= link_to 'Editar', edit_material_path(@material) %> |
+<%= link_to 'Volver', materials_path %>

@@ -12,7 +12,7 @@
     <% @materials.each do |material| %>
       <tr>
         <td><%= link_to material.ficha.nombre, material.ficha %></td>
-        <td><%= material.ubicacion.codigo %></td>
+        <td><%= link_to material.ubicacion.codigo, material.ubicacion %></td>
         <td><%= material.cantidad %></td>
         <td>
           <%= link_to material do %>
