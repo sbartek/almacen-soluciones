@@ -1,7 +1,7 @@
 require 'csv'
 desc "Imports a CSV file into an ActiveRecord table"
 task :import_almacen_csv, [:filename] => :environment do
-  CSV.foreach('db/STOCKSAEMA2014V3PRUEBA.csv', :headers => true) do |row|
+  CSV.foreach('db/STOCKSAEMA2014V4PRUEBA.csv', :headers => true) do |row|
     create_proyecto_from_csv(row)
     
     create_proveedor_from_csv(row)
