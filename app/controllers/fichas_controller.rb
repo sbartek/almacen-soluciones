@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 class FichasController < ApplicationController
-  before_action :set_ficha, only: [:show, :edit, :update, :destroy]
+  before_action :set_ficha, only: [:show, :edit, :update, :destroy, :add_subfamilia, :delete_subfamilia]
 
   # GET /fichas
   # GET /fichas.json
@@ -74,6 +74,23 @@ class FichasController < ApplicationController
     end
   end
 
+  def add_subfamilia
+    @subfamilia = Subfamilia.find(params[:subfamilia_id])
+    if not @ficha.subfamilias.exists?(@subfamilia)
+      @ficha.subfamilias << @subfamilia
+    end
+    redirect_to @ficha
+  end
+
+  def delete_subfamilia
+    @subfamilia = Subfamilia.find(params[:subfamilia_id])
+    if @ficha.subfamilias.exists?(@subfamilia)
+      @ficha.subfamilias.delete(@subfamilia)
+    end
+    redirect_to @ficha
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ficha
@@ -82,6 +99,9 @@ class FichasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ficha_params
-      params.require(:ficha).permit(:nombre, :codigo, :importancia)
+      params.require(:ficha).permit(:nombre, 
+                                    :codigo, 
+                                    :importancia,
+                                    {:subfamilia_ids => []})
     end
 end

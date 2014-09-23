@@ -71,6 +71,6 @@ class SubfamiliasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subfamilia_params
-      params.require(:subfamilia).permit(:nombre, :familia_id)
+      params.require(:subfamilia).permit(:nombre, :familia_id, {:ficha_ids => []})
     end
 end

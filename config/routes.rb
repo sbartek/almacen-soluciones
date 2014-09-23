@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   resources :fichas
 
   resources :fichas do
-    resources :subfamilias
+    post 'add_subfamilia', on: :member
+    get 'delete_subfamilia', on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

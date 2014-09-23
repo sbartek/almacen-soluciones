@@ -25,8 +25,42 @@
         Categorías
       </div>
       <div class="panel-body">
-        <%= render 'subfamilias/table' %>
-        <%= link_to 'Nueva subfamilia', new_subfamilia_path %>
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>
+                subfamilia/familia/unidad de negocio
+              </th>
+              <th>
+              </th>
+            </tr>
+          </thead>
+          <% @ficha.subfamilias.each do |sf| %>
+          <tr>
+            <td>
+              <%= sf.nombre_completo  %>
+            </td>
+            <td>
+              <button type="button" class="btn btn-default">
+                <%= link_to 'Eliminar', controler: "fichas", action: "delete_subfamilia", subfamilia_id: sf.id %>
+              </button>
+          </tr>
+          <% end %>
+          <tr>
+            <%= form_tag({controller: "fichas", action: "add_subfamilia"}, method: "post") do %>
+            <td>
+              <%= select_tag("subfamilia_id", 
+                  options_for_select(Subfamilia.all.collect {|sf| [sf.nombre_completo, sf.id]}), 
+                  class:"form-control")  %>
+            </td>
+            <td>
+              <%= submit_tag("Añadir", class: "btn btn-default") %>
+            </td>
+            <% end %>
+          </tr>
+        </table>
+        
+
       </div>
     </div>
 
