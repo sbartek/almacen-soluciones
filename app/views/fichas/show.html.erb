@@ -20,7 +20,37 @@
         </p>
       </div>
     </div>
+
     <div class="panel panel-default">
+      <div class="panel-heading">
+        Stock
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Cantidad total en Stock:</strong>
+          <%= @ficha.cantidad_total %>
+        </p>
+        <%= render 'materials/table' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Costes
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Precio compra Soluciones:</strong>
+          <%= @ficha.pc_soluciones %> €
+        </p>
+        <p>
+          <strong>Costes DDP Saema:</strong>
+          <%= @ficha.ddp_saema %> $
+        </p>
+      </div>
+    </div>
+        <div class="panel panel-default">
       <div class="panel-heading">
         Categorías
       </div>
@@ -64,35 +94,6 @@
       </div>
     </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Stock
-      </div>
-      <div class="panel-body">
-        <p>
-          <strong>Cantidad total en Stock:</strong>
-          <%= @ficha.cantidad_total %>
-        </p>
-        <%= render 'materials/table' %>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Costes
-      </div>
-      <div class="panel-body">
-        <p>
-          <strong>Precio compra Soluciones:</strong>
-          <%= @ficha.pc_soluciones %> €
-        </p>
-        <p>
-          <strong>Costes DDP Saema:</strong>
-          <%= @ficha.ddp_saema %> $
-        </p>
-      </div>
-    </div>
   </div>
 </div>
 

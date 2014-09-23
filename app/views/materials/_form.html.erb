@@ -15,10 +15,10 @@
     <%= f.number_field :cantidad %>
   </div>
   <div class="form-group">
-    <%= f.select :ficha_id, Ficha.all.collect {|f| [ f.codigo+": "+f.nombre, f.id ] } %>
+    <%= f.select :ficha_id, Ficha.all.collect {|f| [ f.to_s, f.id ] } %>
   </div>
   <div class="form-group">
-    <%= f.select :ubicacion_id, Ubicacion.all.collect {|u| [ u.codigo+": "+u.nombre, u.id ] } %>
+    <%= f.select :ubicacion_id, Ubicacion.all.collect {|u| [ u.to_s, u.id ] } %>
   </div>
   <div class="actions">
     <%= f.submit %>
