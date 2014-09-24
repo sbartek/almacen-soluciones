@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class FichaProveedor < ActiveRecord::Base
   belongs_to :ficha
   belongs_to :proveedor
@@ -7,15 +9,14 @@ class FichaProveedor < ActiveRecord::Base
     rep = ""
     if self.proveedor
       rep += "#{self.proveedor}: " 
+    else
+      rep += "Desconocido: "
     end
     if self.codigo
       rep += self.codigo + ": "
     end
     if self.precio
-      rep += self.precio
-    end
-    if rep == ""
-      rep += self.nombre
+      rep += "#{self.precio.to_s} €"
     end
     return rep
   end

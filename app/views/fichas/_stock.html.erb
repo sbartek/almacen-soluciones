@@ -1,0 +1,12 @@
+<p>
+  <strong>Precio compra Soluciones:</strong>
+  <%= @ficha.pc_soluciones %> €
+</p>
+<p>
+  <strong>Costes DDP Saema:</strong>
+  <%= @ficha.ddp_saema %> $
+</p>
+<p>
+  <strong>PVP Recomendado Saema:</strong>
+  <%= @ficha.ddp_saema*1.25 if @ficha.ddp_saema %> $
+</p>

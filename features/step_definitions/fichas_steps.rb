@@ -24,7 +24,7 @@ Cuando(/^hago click en el enlace "(.*?)" de la pagina inicial$/) do |nombre_enla
   click_link nombre_enlace
 end
 
-Entonces(/^aparece lista ?"?(.*?)"? de "(.*?)[s]" que contiene enlace "(.*?)"$/) do |titulo_lista, model, nombre_enlace|
+Entonces(/^aparece lista ?"?(.*?)"? de "(.*?)s?" que contiene enlace "(.*?)"$/) do |titulo_lista, model, nombre_enlace|
   expect(page).to have_content(titulo_lista)
   expect(page).to have_link nombre_enlace
 end

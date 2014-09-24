@@ -24,9 +24,11 @@
     <%= f.text_area :observaciones %>
   </div>
   <div class="field">
-    <%= f.text_field :ficha_id %>
+    <%= f.select :ficha_id, 
+        options_for_select([["Ningúna", nil]].concat(Ficha.all.sort_by{|f| f.to_s}.map{|f| [f.to_s, f.id]}), 
+        (@ficha? @ficha.id : (@ficha_proveedor.ficha ? @ficha_proveedor.ficha.id : nil))) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Guardar" %>
   </div>
 <% end %>

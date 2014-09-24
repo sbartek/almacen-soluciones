@@ -6,22 +6,7 @@
         <h4> <%= @ficha.nombre %> </h4>
       </div>
       <div class="panel-body">
-        <p>
-          <strong>Codigo:</strong>
-          <%= @ficha.codigo %>
-        </p>
-        <p>
-          <strong>Importancia:</strong>
-          <%= @ficha.importancia %>
-        </p>
-        <p>
-          <strong>Unidad:</strong>
-          <%= @ficha.unidad %>
-        </p>
-        <p>
-          <strong>Observaciones:</strong>
-          <%= @ficha.observaciones %>
-        </p>
+        <%= render 'fichas/show' %>
       </div>
     </div>
 
@@ -44,19 +29,7 @@
         Costes
       </div>
       <div class="panel-body">
-        <p>
-          <strong>Precio compra Soluciones:</strong>
-          <%= @ficha.pc_soluciones %> €
-        </p>
-        <p>
-          <strong>Costes DDP Saema:</strong>
-          <%= @ficha.ddp_saema %> $
-        </p>
-        <p>
-          <strong>PVP Recomendado Saema:</strong>
-          <%= @ficha.ddp_saema*1.25 if @ficha.ddp_saema %> $
-        </p>
-
+        <%= render 'fichas/stock' %>
       </div>
     </div>
     <div class="panel panel-default">
@@ -113,7 +86,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-          Proveedores
+          Fichas de proveedores
         </a>
       </div>
       <div id="collapseTwo" class="panel-collapse collapse">
@@ -121,6 +94,11 @@
           <% @ficha.ficha_proveedors.each do |fp| %>
           <%= link_to fp.proveedor_precio, fp %>
           <br>
+          <% end %>
+          <%= link_to new_ficha_ficha_proveedor_path(@ficha) do %>
+          <div class="button">
+            Nueva ficha de proveedor
+          </div>
           <% end %>
         </div>
       </div>

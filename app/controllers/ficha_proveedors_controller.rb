@@ -14,6 +14,9 @@ class FichaProveedorsController < ApplicationController
 
   # GET /ficha_proveedors/new
   def new
+    if params[:ficha_id]
+      @ficha = Ficha.find(params[:ficha_id])
+    end
     @ficha_proveedor = FichaProveedor.new
   end
 
@@ -28,7 +31,13 @@ class FichaProveedorsController < ApplicationController
 
     respond_to do |format|
       if @ficha_proveedor.save
-        format.html { redirect_to @ficha_proveedor, notice: 'Ficha proveedor was successfully created.' }
+        format.html { 
+          if @ficha_proveedor.ficha
+            redirect_to @ficha_proveedor.ficha, notice: 'Ficha proveedor was successfully created.' 
+          else
+            redirect_to @ficha_proveedor, notice: 'Ficha proveedor was successfully created.' 
+          end
+        }
         format.json { render :show, status: :created, location: @ficha_proveedor }
       else
         format.html { render :new }
@@ -69,6 +78,6 @@ class FichaProveedorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ficha_proveedor_params
-      params.require(:ficha_proveedor).permit(:nombre, :codigo, :precio, :ficha_id)
+      params.require(:ficha_proveedor).permit(:nombre, :codigo, :precio, :ficha_id, :observaciones)
     end
 end

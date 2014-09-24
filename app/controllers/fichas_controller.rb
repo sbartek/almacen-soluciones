@@ -102,6 +102,7 @@ class FichasController < ApplicationController
       params.require(:ficha).permit(:nombre, 
                                     :codigo, 
                                     :importancia,
-                                    {:subfamilia_ids => []})
+                                    {:subfamilia_ids => []},
+                                    :observaciones)
     end
 end

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :fichas
 
   resources :fichas do
+    resources :ficha_proveedors
     post 'add_subfamilia', on: :member
     get 'delete_subfamilia', on: :member
   end
