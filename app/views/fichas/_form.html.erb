@@ -18,9 +18,10 @@
   <div class="form-group">
     <%= f.select :importancia, "<option>A</option><option>B</option><option>C</option><option>D</option>".html_safe %>
   </div>
-  <div class="checkbox">
-    <%= f.collection_check_boxes(:subfamilia_ids, Subfamilia.all, :id, :nombre_completo) %>
-  </div>
+  
+  <!-- <div class="checkbox"> -->
+  <!--   <%= f.collection_check_boxes(:subfamilia_ids, Subfamilia.all, :id, :nombre_completo) %> -->
+  <!-- </div> -->
   <div class="actions">
     <%= f.submit  %>
   </div>

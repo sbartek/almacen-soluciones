@@ -1,6 +1,6 @@
 class Ficha < ActiveRecord::Base
   has_many :materials
-  has_many :ficha_proveedor
+  has_many :ficha_proveedors
   has_and_belongs_to_many :subfamilias
 
   def cantidad_total

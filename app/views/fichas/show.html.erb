@@ -50,7 +50,7 @@
         </p>
       </div>
     </div>
-        <div class="panel panel-default">
+    <div class="panel panel-default">
       <div class="panel-heading">
         Categorías
       </div>
@@ -71,29 +71,54 @@
               <%= sf.nombre_completo  %>
             </td>
             <td>
-              <button type="button" class="btn btn-default">
-                <%= link_to 'Eliminar', controler: "fichas", action: "delete_subfamilia", subfamilia_id: sf.id %>
+              <button type="button" class="btn button2">
+                <%= link_to  controler: "fichas", action: "delete_subfamilia", subfamilia_id: sf.id  do %>
+                <i class="fa fa-trash"></i>
+                <% end %>
               </button>
           </tr>
           <% end %>
           <tr>
-            <%= form_tag({controller: "fichas", action: "add_subfamilia"}, method: "post") do %>
-            <td>
+          </tr>
+        </table>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                Añadir subfamilia
+              </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              <%= form_tag({controller: "fichas", action: "add_subfamilia"}, method: "post") do %>
               <%= select_tag("subfamilia_id", 
                   options_for_select(Subfamilia.all.collect {|sf| [sf.nombre_completo, sf.id]}), 
                   class:"form-control")  %>
-            </td>
-            <td>
-              <%= submit_tag("Añadir", class: "btn btn-default") %>
-            </td>
-            <% end %>
-          </tr>
-        </table>
-        
-
+              <button type="submit" class="btn button2">
+                Añadir <i class="fa fa-floppy-o"></i> 
+              </button>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Fichas de proveedores
+        </a>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <% @ficha.ficha_proveedors.each do |fp| %>
+          <%= link_to fp.to_s, fp %>
+          <br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+     
   </div>
 </div>
 

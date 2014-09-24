@@ -8,22 +8,22 @@ task :import_almacen_csv, [:filename] => :environment do
       create_proyecto_from_csv(row)
       create_proveedor_from_csv(row)
       create_negocio_unidad_from_csv(row)    
-    create_familia_from_csv(row)
-    create_subfamilia_from_csv(row)
-    create_ficha_from_csv(row)
-    create_ficha_proveedor_from_csv(row)
-    create_ubicacion_from_csv(row)
-
-    mat_hash = material_from_cvs(row)
-    mat = find_material_in_db(mat_hash)
-    if not mat
-      material = Material.new
-      material.ubicacion = mat_hash[:ubicacion]
-      material.ficha = mat_hash[:ficha]
-      material[:cantidad] = mat_hash[:cantidad]
-      material.save
-    end
-    line_number += 1
+      create_familia_from_csv(row)
+      create_subfamilia_from_csv(row)
+      get_or_create_ficha_from_csv(row)
+      create_ficha_proveedor_from_csv(row)
+      create_ubicacion_from_csv(row)
+      
+      mat_hash = material_from_cvs(row)
+      mat = find_material_in_db(mat_hash)
+      if not mat
+        material = Material.new
+        material.ubicacion = mat_hash[:ubicacion]
+        material.ficha = mat_hash[:ficha]
+        material[:cantidad] = mat_hash[:cantidad]
+        material.save
+      end
+      line_number += 1
 
     end
   end
@@ -158,7 +158,7 @@ def ficha_from_cvs(row)
   return nil
 end
 
-def create_ficha_from_csv(row)
+def get_or_create_ficha_from_csv(row)
   ficha_hash = ficha_from_cvs(row)
   if ficha_hash
     ficha = Ficha.find_by codigo: ficha_hash[:codigo]
@@ -204,7 +204,7 @@ def create_ficha_proveedor_from_csv(row)
     if not ficha_proveedor
       ficha_proveedor = FichaProveedor.new(hash)
       ficha_proveedor.proveedor = proveedor
-      ficha = create_ficha_from_csv(row)
+      ficha = get_or_create_ficha_from_csv(row)
       ficha_proveedor.ficha = ficha
       ficha_proveedor.save
       puts ficha_proveedor.to_s
