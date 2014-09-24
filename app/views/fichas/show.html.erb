@@ -18,6 +18,10 @@
           <strong>Unidad:</strong>
           <%= @ficha.unidad %>
         </p>
+        <p>
+          <strong>Observaciones:</strong>
+          <%= @ficha.observaciones %>
+        </p>
       </div>
     </div>
 
@@ -71,11 +75,9 @@
               <%= sf.nombre_completo  %>
             </td>
             <td>
-              <button type="button" class="btn button2">
                 <%= link_to  controler: "fichas", action: "delete_subfamilia", subfamilia_id: sf.id  do %>
                 <i class="fa fa-trash"></i>
                 <% end %>
-              </button>
           </tr>
           <% end %>
           <tr>

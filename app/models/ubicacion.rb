@@ -4,4 +4,5 @@ class Ubicacion < ActiveRecord::Base
   def to_s
     self.codigo+": "+self.nombre
   end
+
 end

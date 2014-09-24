@@ -3,6 +3,8 @@
     <tr>
       <th>Ficha</th>
       <th>Ubicacion</th>
+      <th>Ciudad</th>
+      <th>Proyecto</th>
       <th>Cantidad</th>
       <th colspan="3"></th>
     </tr>
@@ -12,7 +14,9 @@
     <% @materials.each do |material| %>
       <tr>
         <td><%= link_to material.ficha.nombre, material.ficha %></td>
-        <td><%= link_to material.ubicacion.codigo, material.ubicacion %></td>
+        <td><%= link_to material.ubicacion.to_s, material.ubicacion %></td>
+        <td><%= material.ubicacion.ciudad %></td>
+        <td><%= material.proyecto %></td>
         <td><%= material.cantidad %></td>
         <td>
           <%= link_to material do %>

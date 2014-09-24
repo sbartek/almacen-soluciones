@@ -3,28 +3,18 @@ desc "Imports a CSV file into an ActiveRecord table"
 task :import_almacen_csv, [:filename] => :environment do
   line_number = 2
   CSV.foreach('db/STOCKSAEMA2014V4PRUEBA.csv', :headers => true) do |row|
-    if true
+    if line_number != 1
       puts "Numero de linea: #{line_number}"
-      create_proyecto_from_csv(row)
-      create_proveedor_from_csv(row)
+      get_or_create_proyecto_from_csv(row)
+      get_or_create_proveedor_from_csv(row)
       create_negocio_unidad_from_csv(row)    
       create_familia_from_csv(row)
       create_subfamilia_from_csv(row)
       get_or_create_ficha_from_csv(row)
       create_ficha_proveedor_from_csv(row)
-      create_ubicacion_from_csv(row)
-      
-      mat_hash = material_from_cvs(row)
-      mat = find_material_in_db(mat_hash)
-      if not mat
-        material = Material.new
-        material.ubicacion = mat_hash[:ubicacion]
-        material.ficha = mat_hash[:ficha]
-        material[:cantidad] = mat_hash[:cantidad]
-        material.save
-      end
+      create_ubicacion_from_csv(row)      
+      get_or_create_material_from_csv(row)
       line_number += 1
-
     end
   end
 end
@@ -46,7 +36,7 @@ def proyecto_from_csv(row)
   end
 end
 
-def create_proyecto_from_csv(row)
+def get_or_create_proyecto_from_csv(row)
   proyecto_hash = proyecto_from_csv(row)
   if proyecto_hash
     proyecto = Proyecto.find_by(proyecto_hash)
@@ -65,7 +55,7 @@ def proveedor_from_csv(row)
   end  
 end
 
-def create_proveedor_from_csv(row)
+def get_or_create_proveedor_from_csv(row)
   proveedor_hash = proveedor_from_csv(row)
   if proveedor_hash
     proveedor = Proveedor.find_by(proveedor_hash)
@@ -141,8 +131,8 @@ def ficha_from_cvs(row)
   if not /\S+/.match(pc_soluciones)
     pc_soluciones = (precio_reader(row[15]).to_d/1.25).to_s
   end
-  unidad = row[23]
-  if not /\S+/.match(unidad)
+  unidad = row[24]
+  if not unidad
     unidad="UNIDAD"
   end
   if row[9] and row[8]
@@ -195,7 +185,7 @@ end
 def create_ficha_proveedor_from_csv(row)
   hash = ficha_proveedor_from_csv(row)
   if hash
-    proveedor = create_proveedor_from_csv(row)
+    proveedor = get_or_create_proveedor_from_csv(row)
     find_by = {nombre: hash[:nombre]}
     if proveedor
       find_by[:proveedor] = proveedor
@@ -236,6 +226,24 @@ def material_from_cvs(row)
   ubi = Ubicacion.find_by codigo: row[0]
   ficha = Ficha.find_by codigo: row[8]
   {ubicacion: ubi, ficha: ficha, cantidad:row[25]}
+end
+
+def get_or_create_material_from_csv(row)
+  hash = material_from_cvs(row)
+  mat = nil
+  if hash
+    mat = find_material_in_db(hash)
+    if not mat
+      mat = Material.new
+      mat.ubicacion = hash[:ubicacion] 
+      mat.ficha = hash[:ficha]
+      mat[:cantidad] = hash[:cantidad]
+      proyecto = get_or_create_proyecto_from_csv(row)
+      mat.proyecto = proyecto if proyecto
+      mat.save
+    end
+  end
+  return mat
 end
 
 def find_material_in_db(mat_hash)

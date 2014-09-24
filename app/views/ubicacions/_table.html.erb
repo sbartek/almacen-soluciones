@@ -12,14 +12,13 @@
     <% @ubicacions.each do |ubicacion| %>
       <tr>
         <td><%= link_to ubicacion.codigo, ubicacion %></td>
-        <td><%= ubicacion.nombre %></td>
+        <td><%= link_to ubicacion.nombre, ubicacion %></td>
         <td><%= ubicacion.ciudad %></td>
         <td>
           <%= link_to ubicacion do %>
           <i class="fa fa-eye"></i>
           <% end %>
         </td>
-
         <td>
           <%= link_to edit_ubicacion_path(ubicacion) do %>
           <i class="fa fa-pencil-square-o"></i>

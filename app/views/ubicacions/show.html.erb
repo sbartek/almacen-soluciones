@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h1>
+  Ubicación
+</h1>
+
 <p>
   <strong>Codigo:</strong>
   <%= @ubicacion.codigo %>
@@ -19,5 +23,5 @@
 <%= render 'materials/table' %>
 
 
-<%= link_to 'Edit', edit_ubicacion_path(@ubicacion) %> |
-<%= link_to 'Back', ubicacions_path %>
+<%= link_to 'Editar', edit_ubicacion_path(@ubicacion) %> |
+<%= link_to 'Volver', ubicacions_path %>

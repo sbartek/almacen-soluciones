@@ -13,7 +13,7 @@ class FichasController < ApplicationController
         flash[:notice] = 'No se encontró ningún resultado.'
       end
     else
-      @fichas = Ficha.all
+      @fichas = Ficha.all.sort_by {|f| -f.cantidad_total}
     end
   end
 

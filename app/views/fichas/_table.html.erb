@@ -4,32 +4,30 @@
       <th>Nombre</th>
       <th>Codigo</th>
       <th>Importancia</th>
-      <th colspan="3"></th>
+      <th>Cantidad total</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @fichas.each do |ficha| %>
-      <tr>
-        <td><%= link_to ficha.nombre, ficha %></td>
-        <td><%= ficha.codigo %></td>
-	<td><%= ficha.importancia %></td>
-        <td>
-          <%= link_to ficha do %>
-          <i class="fa fa-eye"></i>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to edit_ficha_path(ficha) do %>
-          <i class="fa fa-pencil-square-o"></i>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to ficha, method: :delete, data: { confirm: '¿Seguro?' } do %>
-          <i class="fa fa-trash"></i>
-          <% end %>
-        </td>
-      </tr>
+    <tr>
+      <td><%= link_to ficha.nombre, ficha %></td>
+      <td><%= ficha.codigo %></td>
+	    <td><%= ficha.importancia %></td>
+      <td><%= "#{ficha.cantidad_total.to_s} #{ficha.unidad}"  %></td>
+      <td>
+        <%= link_to ficha do %>
+        <i class="fa fa-eye"></i>
+        <% end %>
+        <%= link_to edit_ficha_path(ficha) do %>
+        <i class="fa fa-pencil-square-o"></i>
+        <% end %>
+        <%= link_to ficha, method: :delete, data: { confirm: '¿Seguro?' } do %>
+        <i class="fa fa-trash"></i>
+        <% end %>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
