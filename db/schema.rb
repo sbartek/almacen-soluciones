@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924085606) do
+ActiveRecord::Schema.define(version: 20140924114011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,11 +28,12 @@ ActiveRecord::Schema.define(version: 20140924085606) do
   create_table "ficha_proveedors", force: true do |t|
     t.string   "nombre"
     t.string   "codigo"
-    t.decimal  "precio",       precision: 9, scale: 2
+    t.decimal  "precio",        precision: 9, scale: 2
     t.integer  "ficha_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "proveedor_id"
+    t.text     "observaciones"
   end
 
   add_index "ficha_proveedors", ["ficha_id"], name: "index_ficha_proveedors_on_ficha_id", using: :btree

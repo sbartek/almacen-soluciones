@@ -10,13 +10,19 @@
 </p>
 
 <p>
+  <strong>Proveedor:</strong>
+  <%= @ficha_proveedor.proveedor if @ficha_proveedor.proveedor %>
+</p>
+
+
+<p>
   <strong>Codigo de proveedor:</strong>
   <%= @ficha_proveedor.codigo %>
 </p>
 
 <p>
-  <strong>Precio:</strong>
-  <%= @ficha_proveedor.precio %>
+  <strong>Precio de proveedor:</strong>
+  <%= @ficha_proveedor.precio %> €
 </p>
 
 <p>
@@ -24,5 +30,11 @@
   <%= link_to @ficha_proveedor.ficha, @ficha_proveedor.ficha %>
 </p>
 
-<%= link_to 'Edit', edit_ficha_proveedor_path(@ficha_proveedor) %> |
-<%= link_to 'Back', ficha_proveedors_path %>
+<p>
+  <strong>Observaciones:</strong>
+  <%= @ficha_proveedor.observaciones %>
+</p>
+
+
+<%= link_to 'Editar', edit_ficha_proveedor_path(@ficha_proveedor) %> |
+<%= link_to 'Volver', ficha_proveedors_path %>

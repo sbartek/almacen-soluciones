@@ -52,6 +52,11 @@
           <strong>Costes DDP Saema:</strong>
           <%= @ficha.ddp_saema %> $
         </p>
+        <p>
+          <strong>PVP Recomendado Saema:</strong>
+          <%= @ficha.ddp_saema*1.25 if @ficha.ddp_saema %> $
+        </p>
+
       </div>
     </div>
     <div class="panel panel-default">
@@ -75,9 +80,9 @@
               <%= sf.nombre_completo  %>
             </td>
             <td>
-                <%= link_to  controler: "fichas", action: "delete_subfamilia", subfamilia_id: sf.id  do %>
-                <i class="fa fa-trash"></i>
-                <% end %>
+              <%= link_to  controler: "fichas", action: "delete_subfamilia", subfamilia_id: sf.id  do %>
+              <i class="fa fa-trash"></i>
+              <% end %>
           </tr>
           <% end %>
           <tr>
@@ -85,9 +90,9 @@
         </table>
         <div class="panel panel-default">
           <div class="panel-heading">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                Añadir subfamilia
-              </a>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              Añadir subfamilia
+            </a>
           </div>
           <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body">
@@ -108,13 +113,13 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-          Fichas de proveedores
+          Proveedores
         </a>
       </div>
       <div id="collapseTwo" class="panel-collapse collapse">
         <div class="panel-body">
           <% @ficha.ficha_proveedors.each do |fp| %>
-          <%= link_to fp.to_s, fp %>
+          <%= link_to fp.proveedor_precio, fp %>
           <br>
           <% end %>
         </div>
