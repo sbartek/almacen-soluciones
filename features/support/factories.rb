@@ -3,6 +3,10 @@ require 'factory_girl'
  
 FactoryGirl.define do
 
+  factory :proveedor do
+    nombre "Alexis & Sons"
+  end
+
   factory :negocio_unidad do
     nombre "Energía Nuclear"
   end

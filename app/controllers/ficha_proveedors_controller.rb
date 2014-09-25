@@ -78,6 +78,6 @@ class FichaProveedorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ficha_proveedor_params
-      params.require(:ficha_proveedor).permit(:nombre, :codigo, :precio, :ficha_id, :observaciones)
+      params.require(:ficha_proveedor).permit(:nombre, :codigo, :proveedor_id, :precio, :ficha_id, :observaciones)
     end
 end

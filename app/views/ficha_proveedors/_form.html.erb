@@ -1,34 +1,31 @@
 <%= bootstrap_form_for(@ficha_proveedor) do |f| %>
-  <% if @ficha_proveedor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ficha_proveedor.errors.count, "error") %> prohibited this ficha_proveedor from being saved:</h2>
+<% if @ficha_proveedor.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@ficha_proveedor.errors.count, "error") %> prohibited this ficha_proveedor from being saved:</h2>
+  
+  <ul>
+    <% @ficha_proveedor.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-      <ul>
-      <% @ficha_proveedor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="field">
-    <%= f.text_field :codigo %>
-  </div>
-  <div class="field">
-    <%= f.text_field :precio %>
-  </div>
-    <div class="field">
-    <%= f.text_area :observaciones %>
-  </div>
-  <div class="field">
-    <%= f.select :ficha_id, 
-        options_for_select([["Ningúna", nil]].concat(Ficha.all.sort_by{|f| f.to_s}.map{|f| [f.to_s, f.id]}), 
-        (@ficha? @ficha.id : (@ficha_proveedor.ficha ? @ficha_proveedor.ficha.id : nil))) %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Guardar" %>
-  </div>
+<div class="field">
+  <%= f.text_field :nombre %>
+</div>
+<div class="field">
+  <%= f.text_field :codigo %>
+</div>
+<%= f.select :proveedor_id, 
+    options_for_select([["Ningún", nil]].concat(Proveedor.all.sort_by{|p| p.to_s}.map{|p| [p.to_s, p.id]}),
+    (@ficha_proveedor.proveedor ? @ficha_proveedor.proveedor.id : nil)) %>
+<%= f.text_field :precio %>
+<%= f.text_area :observaciones %>
+<%= f.select :ficha_id, 
+    options_for_select([["Ningúna", nil]].concat(Ficha.all.sort_by{|f| f.to_s}.map{|f| [f.to_s, f.id]}), 
+    (@ficha? @ficha.id : (@ficha_proveedor.ficha ? @ficha_proveedor.ficha.id : nil))) %>
+<div class="actions">
+  <%= f.submit "Guardar" %>
+</div>
 <% end %>

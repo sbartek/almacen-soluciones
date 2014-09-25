@@ -15,7 +15,6 @@ Característica: Descripción de fichas de proveedores
      | nombre     | 
      | Jorge & Co | 
 
-  @wip
   Escenario: Crear una nueva ficha de proveedor con una ficha
     Cuando entro la pagina de la ficha "Tornillo abrazadera M10"
     Cuando hago click en "Nueva ficha de proveedor"
@@ -26,6 +25,6 @@ Característica: Descripción de fichas de proveedores
     Y relleno el campo "Codigo" con "XXX1234"
     Y presiono "Guardar" 
     Entonces vuelvo a la pagina de la ficha "Tornillo abrazadera M10"
-    Entonces aparece lista de "fichas de proveedor" que contiene enlace "Jorge & Co: 999 €"
+    Entonces aparece lista de "Fichas de proveedor" que contiene enlace "Jorge & Co: 999.0 €"
 
 

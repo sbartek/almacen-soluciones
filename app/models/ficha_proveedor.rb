@@ -12,9 +12,6 @@ class FichaProveedor < ActiveRecord::Base
     else
       rep += "Desconocido: "
     end
-    if self.codigo
-      rep += self.codigo + ": "
-    end
     if self.precio
       rep += "#{self.precio.to_s} €"
     end
