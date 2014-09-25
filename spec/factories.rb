@@ -38,4 +38,11 @@ FactoryGirl.define do
      ubicacion FactoryGirl.create(:ubicacion)
      ficha FactoryGirl.create(:ficha)
    end
+
+   factory :usuario do
+    nombre "Alex Cisneros"
+    email "acisne2@soluciones-sl.com"
+   end
+
+  
 end

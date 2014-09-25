@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @solicitud.fecha %>
+</p>
+
+<p>
+  <strong>Proyecto:</strong>
+  <%= @solicitud.proyecto %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @solicitud.usuario %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @solicitud.descripcion %>
+</p>
+
+<p>
+  <strong>Prioridad:</strong>
+  <%= @solicitud.prioridad %>
+</p>
+
+<p>
+  <strong>Fecha limite:</strong>
+  <%= @solicitud.fecha_limite %>
+</p>
+
+<p>
+  <strong>Notas:</strong>
+  <%= @solicitud.notas %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @solicitud.categoria %>
+</p>
+
+<%= link_to 'Edit', edit_solicitud_path(@solicitud) %> |
+<%= link_to 'Back', solicituds_path %>

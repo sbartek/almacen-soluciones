@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :solicituds
+
   resources :ficha_proveedors
 
   resources :proveedors

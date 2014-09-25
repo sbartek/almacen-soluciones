@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924114011) do
+ActiveRecord::Schema.define(version: 20140925104045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,22 @@ ActiveRecord::Schema.define(version: 20140924114011) do
     t.datetime "updated_at"
   end
 
+  create_table "solicituds", force: true do |t|
+    t.date     "fecha"
+    t.integer  "proyecto_id"
+    t.integer  "usuario_id"
+    t.text     "descripcion"
+    t.string   "prioridad"
+    t.date     "fecha_limite"
+    t.text     "notas"
+    t.string   "categoria"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "solicituds", ["proyecto_id"], name: "index_solicituds_on_proyecto_id", using: :btree
+  add_index "solicituds", ["usuario_id"], name: "index_solicituds_on_usuario_id", using: :btree
+
   create_table "subfamilias", force: true do |t|
     t.string   "nombre"
     t.integer  "familia_id"
@@ -99,6 +115,13 @@ ActiveRecord::Schema.define(version: 20140924114011) do
     t.string   "codigo"
     t.string   "nombre"
     t.string   "ciudad"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "usuarios", force: true do |t|
+    t.string   "nombre"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
