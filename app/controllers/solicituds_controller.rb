@@ -10,6 +10,15 @@ class SolicitudsController < ApplicationController
   # GET /solicituds/1
   # GET /solicituds/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = SolicitudPdf.new(@solicitud)
+        send_data pdf.render, filename: "solicitud_#{@solicitud.id}.pdf",
+        type: "application/pdf",
+        disposition: "inline"
+      end
+    end
   end
 
   # GET /solicituds/new

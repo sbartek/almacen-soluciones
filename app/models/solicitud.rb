@@ -8,4 +8,20 @@ class Solicitud < ActiveRecord::Base
 
   validates :categoria, presence: true, inclusion: CATEGORIAS.map{|c| c[1]}
   validates :prioridad, presence: true, inclusion: PRIORIDADES.map{|p| p[1]}
+
+  def optiones_to_hash(optiones)
+    optiones.map{|o| [o[1], o[0]]}.to_h
+  end
+
+  def categoria_full
+    self.optiones_to_hash(CATEGORIAS)[self.categoria]
+  end
+
+  def prioridad_full
+    self.optiones_to_hash(PRIORIDADES)[self.prioridad]
+  end
+
+  def nr_ref
+    "#{self.id}/#{self.fecha.year}"
+  end
 end
