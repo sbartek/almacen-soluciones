@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Usuario, :type => :model do
 
-  before { @usuario = FactoryGirl.create(:usuario, {nombre: "Jorge Ejemplo", email: "jorge@ejemplo.com"}) }
+  before { 
+    @usuario = FactoryGirl.create(:usuario, 
+                                  {nombre: "Jorge", 
+                                    email: "jorge@ejemplo.com"}) 
+  }
 
   subject { @usuario }
   
