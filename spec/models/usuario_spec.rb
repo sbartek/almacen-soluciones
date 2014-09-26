@@ -3,15 +3,28 @@ require 'rails_helper'
 RSpec.describe Usuario, :type => :model do
 
   before { 
-    @usuario = FactoryGirl.create(:usuario, 
+    @usuario = FactoryGirl.create(:usuario_con_password, 
                                   {nombre: "Jorge", 
                                     email: "jorge@ejemplo.com"}) 
   }
 
   subject { @usuario }
+
+  describe "when password is not present" do
+    before do
+      @user = Usuario.new(nombre: "Example User", email: "user@example.com",
+                       password: " ", password_confirmation: " ")
+    end
+    it { should_not be_valid }
+  end
+
+
   
   it {should respond_to(:nombre)}
   it {should respond_to(:email)}
+  it { should respond_to(:password_digest) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
 
   it { should be_valid }
 

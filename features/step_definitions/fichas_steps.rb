@@ -15,7 +15,8 @@ Dado(/^tabla de "?fichas"?:$/) do |table|
       codigo: attributes[:codigo],
       subfamilias: [subfamilia]
     }
-    FactoryGirl.create(:ficha, ficha_attr)
+    ficha = FactoryGirl.create(:ficha, ficha_attr)
+    # ficha.subfamilias <<subfamilia
   end
 end
 

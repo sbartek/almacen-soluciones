@@ -56,3 +56,5 @@ gem 'database_cleaner', github:
 gem 'factory_girl_rails', group: [:test]
 
 gem 'prawn'
+
+gem 'bcrypt'

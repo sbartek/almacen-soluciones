@@ -24,7 +24,7 @@ FactoryGirl.define do
   factory :ficha do
     nombre "Tornillo"
     codigo "9000000001"
-    subfamilias 
+    subfamilias {[FactoryGirl.create(:subfamilia)]}
   end
 
   factory :ubicacion do 
@@ -47,6 +47,16 @@ FactoryGirl.define do
   factory :usuario do
     nombre { "Alexis Cisneros#{Random.rand(100000).to_s}" }
     email { "ac#{Random.rand(100000).to_s}@soluciones.com" }
+    factory :usuario_con_password do
+      ignore do
+        password "alog apud"
+        password_confirmation "alog apud"
+      end
+
+      after(:create) do |usuario, evaluator|
+        usuario.password_digest = "AAAA"
+      end
+    end
   end
 
   factory :solicitud do
