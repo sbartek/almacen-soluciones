@@ -2,8 +2,12 @@
 class LineNumberValidator < ActiveModel::Validator
   def validate(record)
     if record.descripcion.lines.count > 13
-      record.errors[:base] << "Número de lineas no puede superar 13."
+      record.errors[:base] << "Número de lineas de la desripción no puede superar a 13."
     end
+    if record.notas.lines.count > 3
+      record.errors[:base] << "Número de lineas de las notas no puede superar a 3."
+    end
+    
   end
 end
 

@@ -21,7 +21,7 @@
     <%= f.select :usuario_id, Usuario.all.map{|u| [u.nombre, u.id]}, label: "Solicitante" %>
   </div>
   <div class="field">
-    <%= f.text_area :descripcion %>
+    <%= f.text_area :descripcion, :rows => 13 %>
   </div>
   <div class="field">
     <%= f.select :prioridad, Solicitud::PRIORIDADES %>

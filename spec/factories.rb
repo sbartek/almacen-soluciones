@@ -13,18 +13,18 @@ FactoryGirl.define do
 
   factory :familia do
     nombre "Fontanería Espacial"
-    negocio_unidad FactoryGirl.create(:negocio_unidad)
+    negocio_unidad 
   end
 
   factory :subfamilia do
     nombre "Metaaccesorios"
-    familia FactoryGirl.create(:familia)
+    familia 
   end
 
   factory :ficha do
     nombre "Tornillo"
     codigo "9000000001"
-    subfamilias [FactoryGirl.create(:subfamilia)]
+    subfamilias 
   end
 
   factory :ubicacion do 
@@ -39,8 +39,8 @@ FactoryGirl.define do
 
   factory :material do
     cantidad 102
-    ubicacion FactoryGirl.create(:ubicacion)
-    ficha FactoryGirl.create(:ficha)
+    ubicacion
+    ficha 
     proyecto #FactoryGirl.create(:proyecto)
   end
 
