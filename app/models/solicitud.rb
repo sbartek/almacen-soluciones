@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
-
+class LineNumberValidator < ActiveModel::Validator
+  def validate(record)
+    if record.descripcion.lines.count > 13
+      record.errors[:base] << "Número de lineas no puede superar 13."
+    end
+  end
+end
 
 class Solicitud < ActiveRecord::Base
+  validates_with LineNumberValidator
   validates :usuario, presence: true
   validates :proyecto, presence: true
   validates :descripcion, presence: true, length: {minimum: 11, maximum: 1200}

@@ -1,0 +1,46 @@
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Nr Ref</th>
+      <th>Categoria</th>
+      <th>Fecha</th>
+      <th>Proyecto</th>
+      <th>Usuario</th>
+      <th>Descripcion</th>
+      <th>Prioridad</th>
+      <th>Fecha limite</th>
+      <th>Notas</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @solicituds.each do |solicitud| %>
+      <tr>
+        <td><%= solicitud.nr_ref %></td>
+        <td><%= solicitud.categoria_full %></td>
+        <td><%= solicitud.fecha %></td>
+        <td><%= solicitud.proyecto %></td>
+        <td><%= solicitud.usuario %></td>
+        <td><%= "#{solicitud.descripcion[0..9]}..." %></td>
+        <td><%= solicitud.prioridad %></td>
+        <td><%= solicitud.fecha_limite %></td>
+        <td><%= "#{solicitud.notas[0..10]}..." %></td>
+        <td>
+          <%= link_to solicitud do %>
+          <i class="fa fa-eye"></i>
+          <% end %>
+          <%= link_to edit_solicitud_path(solicitud) do %>
+          <i class="fa fa-pencil-square-o"></i>
+          <% end %>
+          <%= link_to solicitud, method: :delete, data: { confirm: '¿Seguro?' } do %>
+          <i class="fa fa-trash"></i>
+          <% end %>
+          <%= link_to solicitud_path(solicitud, :format => "pdf")  do %>
+          <i class="fa fa-file-pdf-o"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

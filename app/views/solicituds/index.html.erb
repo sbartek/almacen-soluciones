@@ -1,39 +1,15 @@
-<h1>Listing solicituds</h1>
+<h1>Lista de Solicitudes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Fecha</th>
-      <th>Proyecto</th>
-      <th>Usuario</th>
-      <th>Descripcion</th>
-      <th>Prioridad</th>
-      <th>Fecha limite</th>
-      <th>Notas</th>
-      <th>Categoria</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @solicituds.each do |solicitud| %>
-      <tr>
-        <td><%= solicitud.fecha %></td>
-        <td><%= solicitud.proyecto %></td>
-        <td><%= solicitud.usuario %></td>
-        <td><%= solicitud.descripcion %></td>
-        <td><%= solicitud.prioridad %></td>
-        <td><%= solicitud.fecha_limite %></td>
-        <td><%= solicitud.notas %></td>
-        <td><%= solicitud.categoria %></td>
-        <td><%= link_to 'Show', solicitud %></td>
-        <td><%= link_to 'Edit', edit_solicitud_path(solicitud) %></td>
-        <td><%= link_to 'Destroy', solicitud, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+  <%= render 'table' %>
+  <div class="col-sm-2 col-xs-4">
+    <%= link_to new_solicitud_path do %>
+    <div class="button">
+      <i class="fa fa-file-text-o"></i><br>
+      Nueva Solicitud
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
 
-<%= link_to 'New Solicitud', new_solicitud_path %>

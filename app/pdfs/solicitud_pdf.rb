@@ -37,7 +37,7 @@ class SolicitudPdf< Prawn::Document
       formatted_text [ { :text => "Descripción", :styles => [:bold] }]
       stroke_horizontal_rule
       text " "
-      text "#{@solicitud.descripcion}\n"*13
+      text "#{@solicitud.descripcion}"
       text " "
       stroke_horizontal_rule
     end
