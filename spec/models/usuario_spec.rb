@@ -3,25 +3,33 @@ require 'rails_helper'
 RSpec.describe Usuario, :type => :model do
 
   before { 
-    @usuario = FactoryGirl.create(:usuario_con_password, 
-                                  {nombre: "Jorge", 
-                                    email: "jorge@ejemplo.com"}) 
+    @usuario = FactoryGirl.create(:usuario, 
+                                   {nombre: "Jorge", 
+                                     email: "jorge@ejemplo.com",
+                                     password: "test1",
+                                     password_confirmation: "test1"
+                                   }) 
+    # @usuario = Usuario.new({nombre: "Jorge", 
+    #                                 email: "jorge@ejemplo.com",
+    #                                 password: "test1",
+    #                                 password_confirmation: "test1"
+    #                               }) 
+    # @usuario.save
   }
 
   subject { @usuario }
 
   describe "when password is not present" do
     before do
-      @user = Usuario.new(nombre: "Example User", email: "user@example.com",
-                       password: " ", password_confirmation: " ")
+      @usuario = Usuario.new(nombre: "Example User", email: "user@example.com",
+                          password: " ", password_confirmation: " ")
     end
     it { should_not be_valid }
   end
 
-
   
-  it {should respond_to(:nombre)}
-  it {should respond_to(:email)}
+  it { should respond_to(:nombre) }
+  it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
@@ -75,6 +83,22 @@ RSpec.describe Usuario, :type => :model do
       end
     end
 
+
+    describe "when email address is already taken" do
+      before do
+        @usuario_with_same_email = FactoryGirl.create(:usuario, 
+                                                      {nombre: "Jorge2", 
+                                                        email: "jorge2@ejemplo.com",
+                                                        password: "test1",
+                                                        password_confirmation: "test1"
+                                                      }) 
+        @usuario_with_same_email.email = "jorge@ejemplo.com"
+      end
+      
+      it "should not be valid" do
+        expect(@usuario_with_same_email).not_to be_valid
+      end
+    end
   end
   
 end
