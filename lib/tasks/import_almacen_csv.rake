@@ -133,7 +133,9 @@ def ficha_from_cvs(row)
   end
   unidad = row[24]
   if not unidad
-    unidad="UNIDAD"
+    unidad="unidad"
+  else
+    unidad.downcase!
   end
   if row[9] and row[8]
     return   {

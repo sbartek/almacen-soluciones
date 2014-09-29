@@ -1,36 +1,27 @@
 Rails.application.routes.draw do
   resources :solicituds
-
   resources :ficha_proveedors
-
   resources :proveedors
-
   resources :proyectos
-
   resources :subfamilias
-
   resources :familias
-
   resources :subfamilia
-
   resources :familia
-
   resources :negocio_unidads
-
   resources :materials
-
   resources :ubicacions
 
   get 'inicio/index'
   root 'inicio#index'
-
-  resources :fichas
 
   resources :fichas do
     resources :ficha_proveedors
     post 'add_subfamilia', on: :member
     get 'delete_subfamilia', on: :member
   end
+
+  get '/usuarios/:id', to: 'usuarios#show'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

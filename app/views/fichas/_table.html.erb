@@ -15,7 +15,7 @@
       <td><%= link_to ficha.nombre, ficha %></td>
       <td><%= ficha.codigo %></td>
 	    <td><%= ficha.importancia %></td>
-      <td><%= "#{ficha.cantidad_total.to_s} #{ficha.unidad}"  %></td>
+      <td><%= pluralize(ficha.cantidad_total,ficha.unidad)  %></td>
       <td>
         <%= link_to ficha do %>
         <i class="fa fa-eye"></i>

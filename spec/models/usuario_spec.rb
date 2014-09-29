@@ -51,6 +51,12 @@ RSpec.describe Usuario, :type => :model do
   
   describe "email" do
 
+    it "should be saved lowercase version" do
+      @usuario.email = @usuario.email.upcase
+      @usuario.save
+      expect(@usuario.email).to eq(@usuario.email.downcase)
+    end
+
     describe "when is not present" do
       before { @usuario.email = " " }
       it { should_not be_valid }
@@ -87,13 +93,13 @@ RSpec.describe Usuario, :type => :model do
         expect(@usuario_with_same_email).not_to be_valid
       end
     end
+
+    
   end
   
   describe "password" do
     describe "when is not present" do
-      before do
-        @usuario.password = @usuario.password_confirmation = " "
-      end
+      before { @usuario.password = @usuario.password_confirmation = " " }
       it { should_not be_valid }
     end
 

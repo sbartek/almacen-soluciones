@@ -1,5 +1,14 @@
 @import "bootstrap";
 
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
 /*body */
 
 body { 
@@ -25,9 +34,9 @@ a:hover {
     background-color: #fff;
 }
 
-.button {
+@mixin button {
+  background-color: #000;
   text-align: center;
-  background-color: #e30613;
   border: 1px;
   border-radius: 5px;	
   padding: 15px;
@@ -35,14 +44,15 @@ a:hover {
   margin: 15px;
 }
 
+.button {
+  @include button;
+  background-color: #e30613;
+
+}
+
 .button-blue {
-  text-align: center;
+  @include button;
   background-color: #1100bb;
-  border: 1px;
-  border-radius: 5px;	
-  padding: 15px;
-  color:white;
-  margin: 15px;
 }
 
 
@@ -58,3 +68,15 @@ a:hover {
   height: 1.5cm;
 }
 /* footer */
+
+
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
