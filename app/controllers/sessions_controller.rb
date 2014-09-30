@@ -2,7 +2,7 @@
 
 class SessionsController < ApplicationController
 
-  skip_before_action :signin_usuario, only: [:new, ]
+  skip_before_action :signin_usuario, only: [:new, :create]
 
   def new
     @page_title = "Accede"
