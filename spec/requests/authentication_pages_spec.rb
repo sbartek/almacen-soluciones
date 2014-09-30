@@ -34,6 +34,11 @@ describe "Authentication" do
       it { should have_link('Perfil', href: usuario_path(usuario)) }
       it { should have_link('Cerrar sessión', href: signout_path) }
       it { should_not have_link('Accede', href: signin_path) }
+
+      describe "followed by signout" do
+        before { click_link "Cerrar sessión" }
+        it { should have_link('Accede') }
+      end
     end
 
   end

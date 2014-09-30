@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     usuario = Usuario.find_by(email: params[:session][:email].downcase)
     if usuario && usuario.authenticate(params[:session][:password])
       sign_in usuario
-      flash[:notice] = 'Login incorrecto.'
       redirect_to root_url
     else
       # Create an error message and re-render the signin form.
@@ -18,4 +17,10 @@ class SessionsController < ApplicationController
       redirect_to signin_url
     end
   end
+
+  def destroy
+    sign_out
+    redirect_to root_url
+  end
+
 end

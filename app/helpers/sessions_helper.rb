@@ -7,6 +7,13 @@ module SessionsHelper
     self.usuario_actual = usuario
   end
 
+  def sign_out
+    usuario_actual.update_attribute(:remember_token,
+                                    Usuario.digest(Usuario.new_remember_token))
+    cookies.delete(:remember_token)
+    usuario_actual = nil
+  end
+
   def signed_in?
     !usuario_actual.nil?
   end
