@@ -9,10 +9,22 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to Almacen, root_path, class:"navbar-brand" %>
+        <%= link_to "Almacen", root_path, class:"navbar-brand", title:"Inicio" %>
       </div>
       
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <%= content_tag :li, class:((controller_name == 'fichas')? "active" : "")  do %>
+            <%= link_to fichas_path, title:"Articulos" do %>
+            <i class="fa fa-list-ul"></i>
+            <% end %>
+          <% end %>
+          <%= content_tag :li, class:((controller_name == 'ubicacions')? "active" : "")  do %>
+            <%= link_to  ubicacions_path, title:"Ubicaciones" do %>
+            <i class="fa fa-globe"></i>
+            <% end %>
+          <% end %>
+        </ul>
 
           <ul class="nav navbar-nav navbar-right">  
             <% if signed_in? %>

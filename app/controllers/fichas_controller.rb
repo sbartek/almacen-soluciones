@@ -2,6 +2,7 @@
 
 class FichasController < ApplicationController
   before_action :set_ficha, only: [:show, :edit, :update, :destroy, :add_subfamilia, :delete_subfamilia]
+  before_action :signin_usuario
 
   # GET /fichas
   # GET /fichas.json
