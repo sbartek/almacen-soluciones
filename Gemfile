@@ -47,6 +47,8 @@ gem 'spring',        group: :development
 gem 'byebug', group: [:development, :test]
 gem 'rails_12factor', group: :production
 gem 'rspec-rails', group: [:development, :test]
+gem 'rspec-its', group: [:development, :test]
+
 gem 'capybara', group: [:development, :test]
 gem 'cucumber-rails', :require => false, group: :test
 gem "ZenTest", group: [:development, :test]
