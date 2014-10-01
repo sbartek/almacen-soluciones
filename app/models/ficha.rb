@@ -1,4 +1,6 @@
 class Ficha < ActiveRecord::Base
+  include PrecioHelper
+
   has_many :materials
   has_many :ficha_proveedors
   has_and_belongs_to_many :subfamilias
