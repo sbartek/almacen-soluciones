@@ -9,101 +9,13 @@
         <%= render 'fichas/show' %>
       </div>
     </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Stock
-      </div>
-      <div class="panel-body">
-        <p>
-          <strong>Cantidad total en Stock:</strong>
-          <%= @ficha.cantidad_total %>
-        </p>
-        <%= render 'materials/table' %>
-      </div>
-    </div>
+    <%= render 'stock' %>
   </div>
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Costes
-      </div>
-      <div class="panel-body">
-        <%= render 'fichas/stock' %>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Categorías
-      </div>
-      <div class="panel-body">
-        <table class="table table-condensed">
-          <thead>
-            <tr>
-              <th>
-                subfamilia/familia/unidad de negocio
-              </th>
-              <th>
-              </th>
-            </tr>
-          </thead>
-          <% @ficha.subfamilias.each do |sf| %>
-          <tr>
-            <td>
-              <%= sf.to_s  %>
-            </td>
-            <td>
-              <%= link_to  controler: "fichas", action: "delete_subfamilia", subfamilia_id: sf.id  do %>
-              <i class="fa fa-trash"></i>
-              <% end %>
-          </tr>
-          <% end %>
-          <tr>
-          </tr>
-        </table>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-              Añadir subfamilia
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse">
-            <div class="panel-body">
-              <%= form_tag({controller: "fichas", action: "add_subfamilia"}, method: "post") do %>
-              <%= select_tag("subfamilia_id", 
-                  options_for_select(Subfamilia.all.collect {|sf| [sf.to_s, sf.id]}), 
-                  class:"form-control")  %>
-              <button type="submit" class="btn button2">
-                Añadir <i class="fa fa-floppy-o"></i> 
-              </button>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-          Fichas de proveedores
-        </a>
-      </div>
-      <div id="collapseTwo" class="panel-collapse collapse">
-        <div class="panel-body">
-          <% @ficha.ficha_proveedors.each do |fp| %>
-          <%= link_to fp.proveedor_precio, fp %>
-          <br>
-          <% end %>
-          <%= link_to new_ficha_ficha_proveedor_path(@ficha) do %>
-          <div class="button">
-            Nueva ficha de proveedor
-          </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-     
+  <div class="col-md-4">
+    <%= render 'costes' %>
+    <%= render 'categorias' %>
+    <%= render 'ficha_proveedor_panel' %>
   </div>
 </div>
 

@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+      Fichas de proveedores
+    </a>
+  </div>
+  <div id="collapseTwo" class="panel-collapse collapse">
+    <div class="panel-body">
+      <% @ficha.ficha_proveedors.each do |fp| %>
+      <%= link_to fp.proveedor_precio, fp %>
+      <br>
+      <% end %>
+      <%= link_to new_ficha_ficha_proveedor_path(@ficha) do %>
+      <div class="button">
+        Nueva ficha de proveedor
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -42,11 +42,6 @@ body {
   filter: none;
 }
 
-a:hover {
-    color: #bbb;
-    background-color: #fff;
-}
-
 @mixin button {
   background-color: #000;
   text-align: center;
@@ -55,12 +50,14 @@ a:hover {
   padding: 15px;
   color:white !important;
   margin: 15px;
+  a {
+    color:white  !important;
+  }
 }
 
 .button {
   @include button;
   background-color: #e30613;
-
 }
 
 .button-blue {

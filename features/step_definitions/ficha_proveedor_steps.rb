@@ -17,10 +17,6 @@ Cuando(/^presiono "(.*?)"$/) do |arg1|
   click_button arg1
 end
 
-Entonces(/^vuelvo a la pagina de la ficha "(.*?)"$/) do |nombre_ficha|
-  expect(find('h4')).to have_content(nombre_ficha)
-end
-
 
 Cuando(/^elijo opción "(.*?)" en el campo "(.*?)"$/) do |option, field|
   select(option, :from => field)

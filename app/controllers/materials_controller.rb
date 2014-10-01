@@ -15,6 +15,10 @@ class MaterialsController < ApplicationController
   # GET /materials/new
   def new
     @material = Material.new
+    if params[:ficha_id]
+      @ficha = Ficha.find(params[:ficha_id])
+      @material.ficha = @ficha
+    end
   end
 
   # GET /materials/1/edit
@@ -28,7 +32,8 @@ class MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to @material, notice: 'Material was successfully created.' }
+        format.html { 
+          redirect_to (@material.ficha ? @material.ficha : @material), notice: 'Material was successfully created.' }
         format.json { render :show, status: :created, location: @material }
       else
         format.html { render :new }

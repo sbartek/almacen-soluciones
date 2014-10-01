@@ -52,9 +52,11 @@ Entonces(/^la lista de "(.*?)" no continene enlace "(.*?)"$/) do |model, nombre_
   expect(page).to_not have_link nombre_enlace
 end
 
-
-
 Entonces(/^aparece mensaje "(.*?)"$/) do |mensaje|
   expect(page).to have_content(mensaje)
+end
+
+Entonces(/^vuelvo a la pagina de la ficha "(.*?)"$/) do |nombre_ficha|
+  expect(find('h4')).to have_content(nombre_ficha)
 end
 

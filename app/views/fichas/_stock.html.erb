@@ -1,12 +1,15 @@
-<p>
-  <strong>Precio compra Soluciones:</strong>
-  <%= @ficha.pc_soluciones %> €
-</p>
-<p>
-  <strong>Costes DDP Saema:</strong>
-  <%= @ficha.ddp_saema %> $
-</p>
-<p>
-  <strong>PVP Recomendado Saema:</strong>
-  <%= @ficha.ddp_saema*1.25 if @ficha.ddp_saema %> $
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Stock
+  </div>
+  <div class="panel-body">
+    <p>
+      <strong>Cantidad total en Stock:</strong>
+      <%= @ficha.cantidad_total %>
+    </p>
+    <%= render 'materials/table' %>
+    <button class="btn button">
+      <%= link_to "Nuevo material", new_ficha_material_path(@ficha) %>
+    </button>
+  </div>
+</div>

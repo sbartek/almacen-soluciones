@@ -24,11 +24,11 @@ Característica: Crear un nuevo material asociado a una ficha ya existente
      | Tornillo abrazadera M10 |         18 |       15 |
 
   Escenario: Añadir otro Tornillo abrazadera M10
-    Cuando Cuando entro la pagina de la ficha "Tornillo abrazadera M10"
+    Cuando entro la pagina de la ficha "Tornillo abrazadera M10"
     Y hago click en "Nuevo material"
     Entonces se abre un formulario
-    Cuando relleno el campo "Nombre" con "Tornillo abrazadera M10B"
-    Y elijo opción "66: Test" en el campo "Ubicacion"
+    Cuando elijo opción "66: Test" en el campo "Ubicacion"
+    Y relleno el campo "Cantidad" con "10"
     Y presiono "Guardar" 
     Entonces vuelvo a la pagina de la ficha "Tornillo abrazadera M10"
-    Entonces aparece lista de "Materiales" que contiene "66: Test"
+    Entonces aparece lista de "Materiales" que contiene enlace "66: Test"
