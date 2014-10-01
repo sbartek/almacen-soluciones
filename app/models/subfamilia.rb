@@ -5,15 +5,14 @@ class Subfamilia < ActiveRecord::Base
   validates_associated :familia
   validates_presence_of :familia
 
-  def nombre_completo
+  def to_s
     rep = "#{self.nombre} / "
     if self.familia
-      rep += "#{self.familia.nombre} / "
-      if self.familia.negocio_unidad
-        rep += "#{self.familia.negocio_unidad.nombre}"
-      end
+      rep += "#{self.familia.to_s}"
     else
       rep += "NO TIENE FAMILIA"
     end
   end
+
+  
 end

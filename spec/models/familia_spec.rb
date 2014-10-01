@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Familia, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let (:familia) { FactoryGirl.create(:familia)}
+  subject { familia }
+  it { should respond_to :subfamilias }
+  it { should respond_to :negocio_unidad }
 end

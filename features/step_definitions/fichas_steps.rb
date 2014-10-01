@@ -20,28 +20,8 @@ Dado(/^tabla de "?fichas"?:$/) do |table|
   end
 end
 
-Cuando(/^hago click en el enlace "(.*?)" de la pagina inicial$/) do |nombre_enlace|
-  visit '/'
-  click_link nombre_enlace
-end
-
-Entonces(/^aparece lista ?"?(.*?)"? de "(.*?)s?" que contiene enlace "(.*?)"$/) do |titulo_lista, model, nombre_enlace|
-  expect(page).to have_content(titulo_lista)
-  expect(page).to have_link nombre_enlace
-end
-
-Cuando(/^hago click en "(.*?)"$/) do |nombre_enlace|
-  click_link nombre_enlace
-end
-
 Entonces(/^aparece la ficha de material con titulo "(.*?)"$/) do |nombre_ficha|
   expect(find('h4')).to have_content(nombre_ficha)
-end
-
-Cuando(/^entro la pagina de la ficha "(.*?)"$/) do |nombre_ficha|
-  visit '/'
-  click_link "Articulos"
-  click_link nombre_ficha
 end
 
 Entonces(/^la cantidad total de "(.*?)"$/) do |numero|
@@ -61,6 +41,8 @@ end
 
 
 Cuando(/^en el campo de búsqueda escribimos "(.*?)"$/) do |arg1|
+  usuario = FactoryGirl.create(:usuario)
+  web_sign_in usuario
   visit '/'
   fill_in "search_fichas", with: arg1
   click_button 'buscar'

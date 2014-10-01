@@ -27,7 +27,7 @@ Característica: Descripción de unidades de negocio, familias y subfamilias
      | Captador de estrellas                          | 0000666666 | Captadores |
      | Panel fotovoltaico 24V 240Wp                   | 0000000523 | Paneles    |
      | Tornillo abrazadera M10                        | 0000000350 | Accesorios |
-    
+
   Escenario: Mostrar lista de todas las fichas de los materiales en una subfamilia 
     Cuando hago click en el enlace "Subfamilias" de la pagina inicial
     Entonces aparezca una lista de enlaces de subfamilias que contiene una fila que contine "Accesorios", "Fontanería", "Agua"

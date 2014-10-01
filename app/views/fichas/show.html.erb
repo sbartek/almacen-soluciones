@@ -50,7 +50,7 @@
           <% @ficha.subfamilias.each do |sf| %>
           <tr>
             <td>
-              <%= sf.nombre_completo  %>
+              <%= sf.to_s  %>
             </td>
             <td>
               <%= link_to  controler: "fichas", action: "delete_subfamilia", subfamilia_id: sf.id  do %>
@@ -71,7 +71,7 @@
             <div class="panel-body">
               <%= form_tag({controller: "fichas", action: "add_subfamilia"}, method: "post") do %>
               <%= select_tag("subfamilia_id", 
-                  options_for_select(Subfamilia.all.collect {|sf| [sf.nombre_completo, sf.id]}), 
+                  options_for_select(Subfamilia.all.collect {|sf| [sf.to_s, sf.id]}), 
                   class:"form-control")  %>
               <button type="submit" class="btn button2">
                 Añadir <i class="fa fa-floppy-o"></i> 
