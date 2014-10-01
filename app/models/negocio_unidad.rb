@@ -11,5 +11,9 @@ class NegocioUnidad < ActiveRecord::Base
     end
     return ret
   end
+  
+  def subfamilias
+    familias.reduce([]) {|sum, el| sum + el.subfamilias}
+  end
 
 end
