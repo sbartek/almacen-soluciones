@@ -11,35 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.date_select :fecha %>
-  </div>
-  <div class="field">
-    <%= f.select :proyecto_id, Proyecto.all.map{|p| [p.nombre, p.id]}  %>
-  </div>
-  <div class="field">
-    <%= f.select :usuario_id, Usuario.all.map{|u| [u.nombre, u.id]}, label: "Solicitante" %>
-  </div>
-  <div class="field">
-    <%= f.text_area :descripcion, :rows => 13 %>
-  </div>
-  <div class="field">
-    <%= f.select :prioridad, Solicitud::PRIORIDADES %>
-  </div>
-  <div class="field">
-    <%= f.date_select :fecha_limite %>
-  </div>
-  <div class="field">
-    <%= f.text_area :notas %>
-  </div>
-  <div class="field">
-    <%= f.select :categoria, Solicitud::CATEGORIAS %>
-  </div>
+  <%= f.select :proyecto_id, Proyecto.all.map{|p| [p.nombre, p.id]}  %>
+  <%= f.select :usuario_id, Usuario.all.map{|u| [u.nombre, u.id]}, label: "Solicitante" %>
+  <%= f.text_area :descripcion, :rows => 13 %>
+  <%= f.select :prioridad, Solicitud::PRIORIDADES %>
+  <%= f.date_select :fecha_limite %>
+  <%= f.text_area :notas %>
+  <%= f.select :categoria, Solicitud::CATEGORIAS %>
+  <%= f.submit %>
 
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 </div>
 <% end %>

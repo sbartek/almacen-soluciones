@@ -33,7 +33,9 @@ class SolicitudsController < ApplicationController
   # POST /solicituds
   # POST /solicituds.json
   def create
-    @solicitud = Solicitud.new(solicitud_params)
+    sp = solicitud_params
+    sp[:fecha] = Time.now.to_date
+    @solicitud = Solicitud.new(sp)
 
     respond_to do |format|
       if @solicitud.save

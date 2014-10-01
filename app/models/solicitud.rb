@@ -15,6 +15,7 @@ class Solicitud < ActiveRecord::Base
   validates_with LineNumberValidator
   validates :usuario, presence: true
   validates :proyecto, presence: true
+  validates :fecha, presence: true
   validates :descripcion, presence: true, length: {minimum: 11, maximum: 1200}
 
   CATEGORIAS = [["Obra", "O"], ["Administación", "A"]]
