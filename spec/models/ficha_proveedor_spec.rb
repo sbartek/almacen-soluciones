@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe FichaProveedor, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  let(:ficha_proveedor) { FactoryGirl.create(:ficha_proveedor)}
+  subject { ficha_proveedor }
+
+  it { should respond_to :nombre }
 end

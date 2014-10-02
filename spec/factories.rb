@@ -65,5 +65,13 @@ FactoryGirl.define do
     categoria "A"
   end
 
-  
+  factory :ficha_proveedor do
+    nombre "Tornillo"
+    codigo "ALA12345"
+    precio 201.5
+    ficha
+    proveedor
+    observaciones "Ala ma dwa koty. Jeden biały, a drugi czerwony."
+  end
+
 end

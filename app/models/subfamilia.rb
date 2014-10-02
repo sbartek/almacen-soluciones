@@ -14,5 +14,7 @@ class Subfamilia < ActiveRecord::Base
     end
   end
 
-  
+  def negocio_unidad
+    familia.negocio_unidad if familia
+  end
 end

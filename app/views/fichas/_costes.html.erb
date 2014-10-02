@@ -3,18 +3,21 @@
     Costes
   </div>
   <div class="panel-body">
-    
+    <p>
+      <strong>Unidad:</strong>
+      <%= @ficha.unidad %>
+    </p>
     <p>
       <strong>Precio compra Soluciones:</strong>
-      <%= @ficha.pc_soluciones %> €
+      <%= precio_antonio(@ficha.pc_soluciones) %> €
     </p>
     <p>
       <strong>Costes DDP Saema:</strong>
-      <%= @ficha.ddp_saema %> $
+      <%= precio_antonio(@ficha.ddp_saema) %> $
     </p>
     <p>
       <strong>PVP Recomendado Saema:</strong>
-      <%= @ficha.ddp_saema*1.25 if @ficha.ddp_saema %> $
+      <%= precio_antonio(@ficha.ddp_saema*1.25) if @ficha.ddp_saema %> $
     </p>
 
   </div>
