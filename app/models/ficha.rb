@@ -12,4 +12,14 @@ class Ficha < ActiveRecord::Base
   def to_s
     self.codigo+": "+self.nombre
   end
+
+  def self.to_csv(options = {} )
+    CSV.generate(options) do |csv|
+    csv << column_names
+    all.each do |ficha|
+      csv << ficha.attributes.values_at(*column_names)
+      end
+    end
+  end
+
 end

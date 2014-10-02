@@ -16,6 +16,11 @@ class FichasController < ApplicationController
     else
       @fichas = Ficha.all.sort_by {|f| -f.cantidad_total}
     end
+    respond_to do |format|
+      format.html 
+      format.json
+      format.csv { render text: Ficha.to_csv }
+    end
   end
 
   # GET /fichas/1
