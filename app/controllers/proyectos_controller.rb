@@ -1,6 +1,6 @@
 class ProyectosController < ApplicationController
   before_action :set_proyecto, only: [:show, :edit, :update, :destroy]
-
+  before_action :signin_usuario
   # GET /proyectos
   # GET /proyectos.json
   def index

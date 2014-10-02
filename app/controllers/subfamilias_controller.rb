@@ -1,5 +1,6 @@
 class SubfamiliasController < ApplicationController
   before_action :set_subfamilia, only: [:show, :edit, :update, :destroy]
+  before_action :signin_usuario
 
   # GET /subfamilias
   # GET /subfamilias.json

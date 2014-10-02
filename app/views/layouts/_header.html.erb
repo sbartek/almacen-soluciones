@@ -24,6 +24,27 @@
             <i class="fa fa-globe"></i>
             <% end %>
           <% end %>
+          <%= content_tag :li, class:((%w{categorias negocio_unidads familias subfamilias}.include?(controller_name))? "active" : "")  do %>
+            <%= link_to  categorias_path, title:"Categorias" do %>
+            <i class="fa fa-cubes "></i>
+            <% end %>
+          <% end %>
+          <%= content_tag :li, class:((controller_name == 'proyectos')? "active" : "")  do %>
+            <%= link_to  proyectos_path, title:"Proyectos" do %>
+            <i class="fa fa-book"></i>
+            <% end %>
+          <% end %>
+          <%= content_tag :li, class:((controller_name == 'proveedors')? "active" : "")  do %>
+            <%= link_to  proveedors_path, title:"Proveedores" do %>
+            <i class="fa fa-truck"></i>
+            <% end %>
+          <% end %>
+          <%= content_tag :li, class:((controller_name == 'solicituds')? "active" : "")  do %>
+            <%= link_to  solicituds_path, title:"Solicitudes" do %>
+            <i class="fa fa-plane"></i>
+            <% end %>
+          <% end %>
+          
         </ul>
 
           <ul class="nav navbar-nav navbar-right">  

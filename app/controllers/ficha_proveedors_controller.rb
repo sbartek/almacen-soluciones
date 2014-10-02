@@ -1,5 +1,6 @@
 class FichaProveedorsController < ApplicationController
   before_action :set_ficha_proveedor, only: [:show, :edit, :update, :destroy]
+  before_action :signin_usuario
 
   # GET /ficha_proveedors
   # GET /ficha_proveedors.json

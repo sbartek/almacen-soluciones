@@ -1,5 +1,6 @@
 class NegocioUnidadsController < ApplicationController
   before_action :set_negocio_unidad, only: [:show, :edit, :update, :destroy]
+  before_action :signin_usuario
 
   # GET /negocio_unidads
   # GET /negocio_unidads.json

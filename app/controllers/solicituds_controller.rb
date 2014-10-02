@@ -1,5 +1,6 @@
 class SolicitudsController < ApplicationController
   before_action :set_solicitud, only: [:show, :edit, :update, :destroy]
+  before_action :signin_usuario
 
   # GET /solicituds
   # GET /solicituds.json

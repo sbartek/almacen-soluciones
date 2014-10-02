@@ -3,9 +3,11 @@
     <h1>Fichas</h1>
   </div>
   <div class="col-sm-2">
-    <%= link_to fichas_path(format: "csv"), class:"mybtn" do %>
+    <button class="mybtn">
+      <%= link_to fichas_path(format: "csv"), class:"mybtn" do %>
       <i class="fa fa-file-excel-o  fa-3x"></i>
-    <% end %>
+      <% end %>
+    </button>
   </div>
 </div>
 
