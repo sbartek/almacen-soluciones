@@ -19,7 +19,7 @@ class FichasController < ApplicationController
     respond_to do |format|
       format.html 
       format.json
-      format.csv { render text: Ficha.to_csv }
+      format.csv { send_data Ficha.to_csv }
     end
   end
 
