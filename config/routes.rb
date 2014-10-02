@@ -20,9 +20,9 @@ Rails.application.routes.draw do
     get 'delete_subfamilia', on: :member
     resources :materials
   end
-
   resources :usuarios, only: [:show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :categorias, only: [:index]
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 

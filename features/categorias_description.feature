@@ -29,7 +29,8 @@ Característica: Descripción de unidades de negocio, familias y subfamilias
      | Tornillo abrazadera M10                        | 0000000350 | Accesorios |
 
   Escenario: Mostrar lista de todas las fichas de los materiales en una subfamilia 
-    Cuando hago click en el enlace "Subfamilias" de la pagina inicial
+    Cuando hago click en el enlace "Categorias" de la pagina inicial
+    Y hago click en "Subfamilias"
     Entonces aparezca una lista de enlaces de subfamilias que contiene una fila que contine "Accesorios", "Fontanería", "Agua"
     Cuando hago click en "Accesorios"
     Entonces aparece lista de "fichas" que contiene enlace "Tornillo abrazadera M10"

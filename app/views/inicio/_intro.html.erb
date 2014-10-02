@@ -4,6 +4,16 @@
     <h1>Bienvenido</h1>
     <%=image_tag("Saema.opt.svg", height:"40%", alt: "Saema")%>
     <p class="space"></p>
-    <p><%= link_to "Accede", signin_path, class:"btn button", role:"button" %></p>
+    <p>
+      <%= link_to  signin_path, role:"button" do %>
+       <button class="mybtn-white">
+         <font size="8">
+           <strong>
+             Accede
+           </strong>
+         </font>
+       </button>
+      <% end %>
+    </p>
   </div>
 </div>
