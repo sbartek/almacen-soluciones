@@ -1,20 +1,23 @@
 require 'csv'
-desc "Imports a CSV file into an ActiveRecord table"
-task :import_almacen_csv, [:filename] => :environment do
-  line_number = 2
-  CSV.foreach('db/STOCKSAEMA2014V4PRUEBA.csv', :headers => true) do |row|
-    if line_number != 1
-      puts "Numero de linea: #{line_number}"
-      get_or_create_proyecto_from_csv(row)
-      get_or_create_proveedor_from_csv(row)
-      create_negocio_unidad_from_csv(row)    
-      create_familia_from_csv(row)
-      create_subfamilia_from_csv(row)
-      get_or_create_ficha_from_csv(row)
-      create_ficha_proveedor_from_csv(row)
-      create_ubicacion_from_csv(row)      
-      get_or_create_material_from_csv(row)
-      line_number += 1
+
+namespace :db do
+  desc "Imports a CSV file into an ActiveRecord table"
+  task :import_almacen_csv, [:filename] => :environment do
+    line_number = 2
+    CSV.foreach('db/STOCKSAEMA2014V4PRUEBA.csv', :headers => true) do |row|
+      if line_number != 1
+        puts "Numero de linea: #{line_number}"
+        get_or_create_proyecto_from_csv(row)
+        get_or_create_proveedor_from_csv(row)
+        create_negocio_unidad_from_csv(row)    
+        create_familia_from_csv(row)
+        create_subfamilia_from_csv(row)
+        get_or_create_ficha_from_csv(row)
+        create_ficha_proveedor_from_csv(row)
+        create_ubicacion_from_csv(row)      
+        get_or_create_material_from_csv(row)
+        line_number += 1
+      end
     end
   end
 end

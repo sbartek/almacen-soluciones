@@ -24,22 +24,27 @@ RSpec.describe ProyectosController, :type => :controller do
   # Proyecto. As you add validations to Proyecto, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { nombre:"Test" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { }
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ProyectosController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  #let(:valid_session) { {} }
+  before(:each) do
+    usuario = FactoryGirl.create(:usuario)
+    web_sign_in usuario
+  end
 
   describe "GET index" do
     it "assigns all proyectos as @proyectos" do
       proyecto = Proyecto.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
+      save_and_open_page
       expect(assigns(:proyectos)).to eq([proyecto])
     end
   end
