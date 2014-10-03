@@ -8,7 +8,7 @@ describe "Authentication" do
   describe "'Accede' page" do
     before { visit signin_path }
 
-    it { should have_content('Inicia sessión') }
+    it { should have_content('Inicia sesión') }
     it { should have_title('Accede') }
   end
 

@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "Solicituds", :type => :request do
+  let (:usuario) {
+    FactoryGirl.create(:usuario)
+  }
+  
   before {
-    @usuario = FactoryGirl.create(:usuario)
     @proyecto = FactoryGirl.create(:proyecto)
+    web_sign_in usuario
   }
 
   describe "new solicitud" do

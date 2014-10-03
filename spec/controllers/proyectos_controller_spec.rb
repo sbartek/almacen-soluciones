@@ -44,7 +44,6 @@ RSpec.describe ProyectosController, :type => :controller do
     it "assigns all proyectos as @proyectos" do
       proyecto = Proyecto.create! valid_attributes
       get :index, {}
-      save_and_open_page
       expect(assigns(:proyectos)).to eq([proyecto])
     end
   end
