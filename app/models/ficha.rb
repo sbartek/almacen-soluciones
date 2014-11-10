@@ -22,8 +22,8 @@ class Ficha < ActiveRecord::Base
         attrs = ficha.attributes.values_at(*Ficha.column_names)
         attrs += [ficha.cantidad_total]
         ficha.materials.each do |material| 
-          attrs += [material.ubicacion.codigo, material.ubicacion.codigo, material.cantidad]
-          csv << attrs
+          attrs_mat = attrs + [material.ubicacion.codigo, material.ubicacion.nombre, material.cantidad]
+          csv << attrs_mat
         end
       end
     end
