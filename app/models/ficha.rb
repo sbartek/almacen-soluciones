@@ -15,9 +15,16 @@ class Ficha < ActiveRecord::Base
 
   def self.to_csv(options = {} )
     CSV.generate(options) do |csv|
-    csv << column_names
-    all.each do |ficha|
-      csv << ficha.attributes.values_at(*column_names)
+      nombres = Ficha.column_names 
+      nombres += ["cantidad total", "codigo de ubicacion", "nombre de ubicacion", "cantidad"]
+      csv << nombres 
+      Ficha.all.each do |ficha|
+        attrs = ficha.attributes.values_at(*Ficha.column_names)
+        attrs += [ficha.cantidad_total]
+        ficha.materials.each do |material| 
+          attrs += [material.ubicacion.codigo, material.ubicacion.codigo, material.cantidad]
+          csv << attrs
+        end
       end
     end
   end
