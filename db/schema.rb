@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930075356) do
+ActiveRecord::Schema.define(version: 20141112094134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20140930075356) do
     t.string   "categoria"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "estado",       limit: 2
   end
 
   add_index "solicituds", ["proyecto_id"], name: "index_solicituds_on_proyecto_id", using: :btree

@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Nr Ref</th>
+      <th>Estado</th>
       <th>Categoria</th>
       <th>Fecha</th>
       <th>Proyecto</th>
@@ -18,12 +19,13 @@
     <% @solicituds.each do |solicitud| %>
       <tr>
         <td><%= solicitud.nr_ref %></td>
+        <td><%= solicitud.estado_full %></td>
         <td><%= solicitud.categoria_full %></td>
         <td><%= solicitud.fecha %></td>
         <td><%= solicitud.proyecto %></td>
         <td><%= solicitud.usuario %></td>
         <td><%= "#{solicitud.descripcion[0..9]}..." %></td>
-        <td><%= solicitud.prioridad %></td>
+        <td><%= solicitud.prioridad_full %></td>
         <td><%= solicitud.fecha_limite %></td>
         <td><%= "#{solicitud.notas[0..10]}..." %></td>
         <td>

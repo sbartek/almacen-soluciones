@@ -20,6 +20,7 @@ class Solicitud < ActiveRecord::Base
 
   CATEGORIAS = [["Obra", "O"], ["Administación", "A"]]
   PRIORIDADES = [["Normal", "N"], ["Urgente", "U"]]
+  ESTADO = [["En proceso", "A"], ["Finalizado", "B"], ["Cancelado", "C"], ["Paralizado", "D"]]
 
   belongs_to :proyecto
   belongs_to :usuario
@@ -37,6 +38,10 @@ class Solicitud < ActiveRecord::Base
 
   def prioridad_full
     self.optiones_to_hash(PRIORIDADES)[self.prioridad]
+  end
+
+  def estado_full
+    self.optiones_to_hash(ESTADO)[self.estado]
   end
 
   def nr_ref

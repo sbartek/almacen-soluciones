@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <%= f.select :estado, Solicitud::ESTADO %>
   <%= f.select :proyecto_id, Proyecto.all.map{|p| [p.nombre, p.id]}  %>
   <%= f.select :usuario_id, Usuario.all.map{|u| [u.nombre, u.id]}, label: "Solicitante" %>
   <%= f.text_area :descripcion, :rows => 13 %>
